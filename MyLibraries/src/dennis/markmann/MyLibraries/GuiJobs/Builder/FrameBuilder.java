@@ -1,4 +1,4 @@
-package dennis.markmann.MyLibraries.Gui.Builder;
+package dennis.markmann.MyLibraries.GuiJobs.Builder;
 
 import java.awt.Component;
 import java.awt.Dimension;

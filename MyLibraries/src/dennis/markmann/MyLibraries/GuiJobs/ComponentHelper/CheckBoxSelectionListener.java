@@ -1,4 +1,4 @@
-package dennis.markmann.MyLibraries.Gui.ComponentHelper;
+package dennis.markmann.MyLibraries.GuiJobs.ComponentHelper;
 
 import java.awt.event.ItemEvent;
 import java.awt.event.ItemListener;

@@ -1,6 +1,6 @@
-package dennis.markmann.MyLibraries.Gui.DefaultFrameClasses;
+package dennis.markmann.MyLibraries.GuiJobs.DefaultFrameClasses;
 
-import dennis.markmann.MyLibraries.Gui.Builder.FrameBuilder;
+import dennis.markmann.MyLibraries.GuiJobs.Builder.FrameBuilder;
 
 /**
  * Interface for frames. Forces to implement default operations and parameters.

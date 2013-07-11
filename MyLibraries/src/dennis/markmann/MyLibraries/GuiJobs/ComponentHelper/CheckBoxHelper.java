@@ -1,4 +1,4 @@
-package dennis.markmann.MyLibraries.Gui.ComponentHelper;
+package dennis.markmann.MyLibraries.GuiJobs.ComponentHelper;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -6,7 +6,7 @@ import java.util.List;
 import javax.swing.JCheckBox;
 import javax.swing.JFrame;
 
-import dennis.markmann.MyLibraries.Gui.Builder.FrameBuilder;
+import dennis.markmann.MyLibraries.GuiJobs.Builder.FrameBuilder;
 
 /**
  * Helper class to create new checkBoxes with single select functionality.

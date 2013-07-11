@@ -1,4 +1,4 @@
-package dennis.markmann.MyLibraries.Gui.DefaultFrameClasses;
+package dennis.markmann.MyLibraries.GuiJobs.DefaultFrameClasses;
 
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
