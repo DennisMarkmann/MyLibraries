@@ -4,7 +4,6 @@ import java.awt.Component;
 import java.awt.Dimension;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
-import java.awt.Insets;
 
 import javax.swing.JButton;
 import javax.swing.JCheckBox;
@@ -13,15 +12,11 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JTextField;
 
-public class FrameBuilder {
-
-    private final GridBagConstraints gridBagConstraints = new GridBagConstraints();
+public class FrameBuilder extends ComponentBuilder {
 
     public FrameBuilder() {
-
-        this.gridBagConstraints.insets = new Insets(5, 5, 5, 5);
-        this.gridBagConstraints.fill = GridBagConstraints.BOTH;
-        this.gridBagConstraints.weightx = 2;
+        super();
+        super.getGridBagConstraints().fill = GridBagConstraints.BOTH;
     }
 
     public final void setDefaultFrameSettings(final JFrame frame, final String frameName) {
@@ -36,13 +31,12 @@ public class FrameBuilder {
 
     public final JButton createButton(
             final JFrame frame,
-            final String name,
+            final String buttonName,
             final String buttonText,
             final int gridxValue,
             final int gridyValue) {
 
-        final JButton button = new JButton(buttonText);
-        this.setName(button, name);
+        final JButton button = super.createButton(buttonName, buttonText, gridxValue, gridyValue);
         this.setPosition(frame, this.gridBagConstraints, gridxValue, gridyValue, button);
 
         return button;
@@ -98,10 +92,6 @@ public class FrameBuilder {
         return checkBox;
     }
 
-    private void setName(final Component object, final String objectName) {
-        object.setName(objectName);
-    }
-
     private void setPosition(
             final JFrame frame,
             final GridBagConstraints c,
@@ -112,9 +102,5 @@ public class FrameBuilder {
         c.gridx = gridxValue;
         c.gridy = gridyValue;
         frame.add(object, c);
-    }
-
-    public final GridBagConstraints getGridBagConstraints() {
-        return this.gridBagConstraints;
     }
 }

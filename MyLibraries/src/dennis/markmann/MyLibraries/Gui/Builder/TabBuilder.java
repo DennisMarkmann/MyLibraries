@@ -2,20 +2,17 @@ package dennis.markmann.MyLibraries.Gui.Builder;
 
 import java.awt.Component;
 import java.awt.GridBagConstraints;
-import java.awt.Insets;
 
 import javax.swing.JButton;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
 
-public class TabBuilder {
-
-    private final GridBagConstraints gridBagConstraints = new GridBagConstraints();
+public class TabBuilder extends ComponentBuilder {
 
     public TabBuilder() {
-        this.gridBagConstraints.insets = new Insets(5, 5, 5, 5);
-        this.setDefaultGridBackValues();
+        super();
+        super.getGridBagConstraints().fill = GridBagConstraints.HORIZONTAL;
     }
 
     public final void setDefaultGridBackValues() {
@@ -30,8 +27,7 @@ public class TabBuilder {
             final int gridxValue,
             final int gridyValue) {
 
-        final JButton button = new JButton(buttonText);
-        this.setName(button, buttonName);
+        final JButton button = super.createButton(buttonName, buttonText, gridxValue, gridyValue);
         this.setPosition(jPanel, this.gridBagConstraints, gridxValue, gridyValue, button);
 
         return button;
@@ -39,15 +35,11 @@ public class TabBuilder {
 
     public JScrollPane createTable(final JPanel jPanel, final int gridxValue, final int gridyValue, final JTable jTable) {
 
-        final JScrollPane scrollPane = new JScrollPane(jTable);
-        jTable.setFillsViewportHeight(true);
+        final JScrollPane scrollPane = super.createTable(gridxValue, gridyValue, jTable);
         this.setPosition(jPanel, this.gridBagConstraints, gridxValue, gridyValue, scrollPane);
+
         return scrollPane;
 
-    }
-
-    private void setName(final Component object, final String objectName) {
-        object.setName(objectName);
     }
 
     private void setPosition(
@@ -60,10 +52,5 @@ public class TabBuilder {
         c.gridx = gridxValue;
         c.gridy = gridyValue;
         jPanel.add(object, c);
-    }
-
-    public final GridBagConstraints getGridBagConstraints() {
-        return this.gridBagConstraints;
-
     }
 }
