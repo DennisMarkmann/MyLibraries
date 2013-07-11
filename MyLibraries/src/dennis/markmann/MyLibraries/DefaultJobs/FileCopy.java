@@ -17,11 +17,11 @@ import dennis.markmann.MyLibraries.Exceptions.CopyOperationException;
  * @version 1.0
  */
 
-class FileCopy {
+public class FileCopy {
 
     private final long chunckSizeInBytes = 1024 * 1024;
 
-    final void copy(final String source, final String destination) {
+    public final void copy(final String source, final String destination) {
         try {
 
             final File sourceFile = new File(source);
