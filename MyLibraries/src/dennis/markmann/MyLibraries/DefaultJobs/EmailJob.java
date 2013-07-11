@@ -13,8 +13,17 @@ import javax.mail.Transport;
 import javax.mail.internet.InternetAddress;
 import javax.mail.internet.MimeMessage;
 
+import dennis.markmann.MyLibraries.Exceptions.EmailAddressException;
 import dennis.markmann.MyLibraries.Exceptions.SendEmailOperationException;
 import dennis.markmann.MyLibraries.MyObjects.EmailObject;
+
+/**
+ * Used to send out E-Mails.
+ * 
+ * @author dennis.markmann
+ * @since JDK.1.7.0_21
+ * @version 1.0
+ */
 
 public class EmailJob {
 
@@ -52,6 +61,7 @@ public class EmailJob {
                             msg.setRecipients(Message.RecipientType.TO, InternetAddress.parse(emailAddress, false));
                             Transport.send(msg);
                         } catch (final MessagingException e) {
+                            new EmailAddressException(e.getStackTrace(), emailAddress).showDialog();
                         }
                     }
                 }
@@ -60,6 +70,14 @@ public class EmailJob {
             new SendEmailOperationException(e.getStackTrace()).showDialog();
         }
     }
+
+    /**
+     * Used to authentificate with protected E-Mail provider.
+     * 
+     * @author dennis.markmann
+     * @since JDK.1.7.0_21
+     * @version 1.0
+     */
 
     private final class MailAuthenticator extends Authenticator {
 

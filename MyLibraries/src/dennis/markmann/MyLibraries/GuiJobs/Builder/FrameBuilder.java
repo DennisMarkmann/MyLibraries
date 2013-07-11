@@ -24,7 +24,7 @@ public class FrameBuilder extends ComponentBuilder {
 
     public FrameBuilder() {
         super();
-        super.getGridBagConstraints().fill = GridBagConstraints.BOTH;
+        this.getGridBagConstraints().fill = GridBagConstraints.BOTH;
     }
 
     public final void setDefaultFrameSettings(final JFrame frame, final String frameName) {
@@ -45,14 +45,14 @@ public class FrameBuilder extends ComponentBuilder {
             final int gridyValue) {
 
         final JButton button = super.createButton(buttonName, buttonText, gridxValue, gridyValue);
-        this.setPosition(frame, this.gridBagConstraints, gridxValue, gridyValue, button);
+        this.setPosition(frame, this.getGridBagConstraints(), gridxValue, gridyValue, button);
 
         return button;
     }
 
     public final JLabel createLabel(final JFrame frame, final String labelText, final int gridxValue, final int gridyValue) {
         final JLabel label = new JLabel(labelText);
-        this.setPosition(frame, this.gridBagConstraints, gridxValue, gridyValue, label);
+        this.setPosition(frame, this.getGridBagConstraints(), gridxValue, gridyValue, label);
 
         return label;
     }
@@ -66,7 +66,7 @@ public class FrameBuilder extends ComponentBuilder {
 
         final JTextField textField = new JTextField(textFieldSize);
         this.setName(textField, name);
-        this.setPosition(frame, this.gridBagConstraints, gridxValue, gridyValue, textField);
+        this.setPosition(frame, this.getGridBagConstraints(), gridxValue, gridyValue, textField);
 
         return textField;
     }
@@ -80,7 +80,7 @@ public class FrameBuilder extends ComponentBuilder {
 
         final JComboBox<String> comboBox = new JComboBox<String>(content);
         this.setName(comboBox, name);
-        this.setPosition(frame, this.gridBagConstraints, gridxValue, gridyValue, comboBox);
+        this.setPosition(frame, this.getGridBagConstraints(), gridxValue, gridyValue, comboBox);
 
         return comboBox;
     }
@@ -95,7 +95,7 @@ public class FrameBuilder extends ComponentBuilder {
         final JCheckBox checkBox = new JCheckBox();
         checkBox.setText(text);
         this.setName(checkBox, name);
-        this.setPosition(frame, this.gridBagConstraints, gridxValue, gridyValue, checkBox);
+        this.setPosition(frame, this.getGridBagConstraints(), gridxValue, gridyValue, checkBox);
 
         return checkBox;
     }

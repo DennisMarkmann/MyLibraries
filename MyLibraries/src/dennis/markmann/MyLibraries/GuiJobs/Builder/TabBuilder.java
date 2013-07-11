@@ -20,12 +20,12 @@ public class TabBuilder extends ComponentBuilder {
 
     public TabBuilder() {
         super();
-        super.getGridBagConstraints().fill = GridBagConstraints.HORIZONTAL;
+        this.getGridBagConstraints().fill = GridBagConstraints.HORIZONTAL;
     }
 
     public final void setDefaultGridBackValues() {
-        this.gridBagConstraints.fill = GridBagConstraints.HORIZONTAL;
-        this.gridBagConstraints.weightx = 2;
+        this.getGridBagConstraints().fill = GridBagConstraints.HORIZONTAL;
+        this.getGridBagConstraints().weightx = 2;
     }
 
     public final JButton createButton(
@@ -36,7 +36,7 @@ public class TabBuilder extends ComponentBuilder {
             final int gridyValue) {
 
         final JButton button = super.createButton(buttonName, buttonText, gridxValue, gridyValue);
-        this.setPosition(jPanel, this.gridBagConstraints, gridxValue, gridyValue, button);
+        this.setPosition(jPanel, this.getGridBagConstraints(), gridxValue, gridyValue, button);
 
         return button;
     }
@@ -44,7 +44,7 @@ public class TabBuilder extends ComponentBuilder {
     public final JScrollPane createTable(final JPanel jPanel, final int gridxValue, final int gridyValue, final JTable jTable) {
 
         final JScrollPane scrollPane = super.createTable(gridxValue, gridyValue, jTable);
-        this.setPosition(jPanel, this.gridBagConstraints, gridxValue, gridyValue, scrollPane);
+        this.setPosition(jPanel, this.getGridBagConstraints(), gridxValue, gridyValue, scrollPane);
 
         return scrollPane;
 

@@ -4,20 +4,28 @@ import java.util.ArrayList;
 
 import javax.mail.internet.MimeMultipart;
 
+/**
+ * E-Mail object containing the mail content and the list of addresses the mail has to be send to.
+ * 
+ * @author dennis.markmann
+ * @since JDK.1.7.0_21
+ * @version 1.0
+ */
+
 public class EmailObject {
 
     private MimeMultipart mailContent;
     private final ArrayList<String> emailAddressList = new ArrayList<>();
 
-    public MimeMultipart getMailContent() {
+    public final MimeMultipart getMailContent() {
         return this.mailContent;
     }
 
-    public void setMailContent(final MimeMultipart mailContent) {
+    public final void setMailContent(final MimeMultipart mailContent) {
         this.mailContent = mailContent;
     }
 
-    public ArrayList<String> getEmailAddressList() {
+    public final ArrayList<String> getEmailAddressList() {
         return this.emailAddressList;
     }
 
