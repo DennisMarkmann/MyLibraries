@@ -1,4 +1,4 @@
-package dennis.markmann.MyLibraries.PrintJob;
+package dennis.markmann.MyLibraries.DefaultJobs;
 
 import java.awt.Dimension;
 import java.awt.Font;

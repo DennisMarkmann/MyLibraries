@@ -9,11 +9,11 @@ import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
 
-public class GuiTabBuilder {
+public class TabBuilder {
 
     private final GridBagConstraints gridBagConstraints = new GridBagConstraints();
 
-    public GuiTabBuilder() {
+    public TabBuilder() {
         this.gridBagConstraints.insets = new Insets(5, 5, 5, 5);
         this.setDefaultGridBackValues();
     }

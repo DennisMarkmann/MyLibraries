@@ -13,11 +13,11 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JTextField;
 
-public class GuiFrameBuilder {
+public class FrameBuilder {
 
     private final GridBagConstraints gridBagConstraints = new GridBagConstraints();
 
-    public GuiFrameBuilder() {
+    public FrameBuilder() {
 
         this.gridBagConstraints.insets = new Insets(5, 5, 5, 5);
         this.gridBagConstraints.fill = GridBagConstraints.BOTH;
