@@ -1,4 +1,4 @@
-package dennis.markmann.MyLibraries.DefaultJobs;
+package dennis.markmann.MyLibraries.DefaultJobs.Email;
 
 import java.util.ArrayList;
 import java.util.Date;
@@ -15,7 +15,6 @@ import javax.mail.internet.MimeMessage;
 
 import dennis.markmann.MyLibraries.Exceptions.EmailAddressException;
 import dennis.markmann.MyLibraries.Exceptions.SendEmailOperationException;
-import dennis.markmann.MyLibraries.MyObjects.EmailObject;
 
 /**
  * Used to send out E-Mails.
@@ -45,9 +44,7 @@ public class EmailJob {
 
         try {
             final Message msg = new MimeMessage(session);
-
             msg.setFrom(new InternetAddress(senderAddress));
-
             msg.setSubject(subject);
             msg.setHeader(subject, subject);
             msg.setSentDate(new Date());

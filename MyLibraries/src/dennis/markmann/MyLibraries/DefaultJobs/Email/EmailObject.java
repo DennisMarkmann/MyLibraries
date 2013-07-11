@@ -1,4 +1,4 @@
-package dennis.markmann.MyLibraries.MyObjects;
+package dennis.markmann.MyLibraries.DefaultJobs.Email;
 
 import java.util.ArrayList;
 
