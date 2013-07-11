@@ -10,6 +10,14 @@ import javax.swing.JTable;
 
 public class ComponentBuilder {
 
+    /**
+     * Super builder for main GUI components.
+     * 
+     * @author dennis.markmann
+     * @since jdk1.7.0_21
+     * @version 1.0
+     */
+
     protected final GridBagConstraints gridBagConstraints = new GridBagConstraints();
 
     public ComponentBuilder() {

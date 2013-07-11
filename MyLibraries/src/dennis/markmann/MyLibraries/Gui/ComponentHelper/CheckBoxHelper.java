@@ -8,6 +8,14 @@ import javax.swing.JFrame;
 
 import dennis.markmann.MyLibraries.Gui.Builder.FrameBuilder;
 
+/**
+ * Helper class to create new checkBoxes with single select functionality.
+ * 
+ * @author dennis.markmann
+ * @since jdk1.7.0_21
+ * @version 1.0
+ */
+
 public class CheckBoxHelper {
 
     private final List<JCheckBox> checkBoxList = new ArrayList<JCheckBox>();

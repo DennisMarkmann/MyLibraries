@@ -6,6 +6,14 @@ import java.util.List;
 
 import javax.swing.JCheckBox;
 
+/**
+ * Listener allowing checkBoxes to have single selection functionality.
+ * 
+ * @author dennis.markmann
+ * @since jdk1.7.0_21
+ * @version 1.0
+ */
+
 public class CheckBoxSelectionListener implements ItemListener {
 
     private final List<JCheckBox> checkBoxList;

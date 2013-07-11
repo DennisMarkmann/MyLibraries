@@ -12,6 +12,14 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JTextField;
 
+/**
+ * Builder for frame components.
+ * 
+ * @author dennis.markmann
+ * @since jdk1.7.0_21
+ * @version 1.0
+ */
+
 public class FrameBuilder extends ComponentBuilder {
 
     public FrameBuilder() {

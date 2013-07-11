@@ -8,6 +8,14 @@ import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
 
+/**
+ * Builder for tab components.
+ * 
+ * @author dennis.markmann
+ * @since jdk1.7.0_21
+ * @version 1.0
+ */
+
 public class TabBuilder extends ComponentBuilder {
 
     public TabBuilder() {

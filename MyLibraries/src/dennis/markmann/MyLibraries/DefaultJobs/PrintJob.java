@@ -22,7 +22,7 @@ import javax.swing.text.Utilities;
 import dennis.markmann.MyLibraries.Exceptions.PrintOperationException;
 
 /**
- * Class for printing out texts.
+ * Used to print out texts.
  * 
  * @author dennis.markmann
  * @since jdk1.7.0_21
