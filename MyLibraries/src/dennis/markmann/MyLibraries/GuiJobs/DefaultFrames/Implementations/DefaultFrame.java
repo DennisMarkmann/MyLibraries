@@ -1,4 +1,4 @@
-package dennis.markmann.MyLibraries.GuiJobs.DefaultFrameClasses;
+package dennis.markmann.MyLibraries.GuiJobs.DefaultFrames.Implementations;
 
 import dennis.markmann.MyLibraries.GuiJobs.Builder.FrameBuilder;
 

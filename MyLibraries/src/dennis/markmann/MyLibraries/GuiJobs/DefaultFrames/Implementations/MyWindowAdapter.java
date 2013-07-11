@@ -1,4 +1,4 @@
-package dennis.markmann.MyLibraries.GuiJobs.DefaultFrameClasses;
+package dennis.markmann.MyLibraries.GuiJobs.DefaultFrames.Implementations;
 
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
