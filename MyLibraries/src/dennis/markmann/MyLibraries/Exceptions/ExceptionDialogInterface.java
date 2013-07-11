@@ -5,6 +5,7 @@ package dennis.markmann.MyLibraries.Exceptions;
  * 
  * @author it1-markde
  * @since jdk1.7.0_21
+ * @version 1.0
  */
 
 interface ExceptionDialogInterface {
