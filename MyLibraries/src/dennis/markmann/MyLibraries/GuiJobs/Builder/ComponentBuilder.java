@@ -25,7 +25,7 @@ public class ComponentBuilder {
         this.gridBagConstraints.weightx = 2;
     }
 
-    public JButton createButton(final String name, final String buttonText, final int gridxValue, final int gridyValue) {
+    public final JButton createButton(final String name, final String buttonText, final int gridxValue, final int gridyValue) {
 
         final JButton button = new JButton(buttonText);
         this.setName(button, name);
@@ -33,7 +33,7 @@ public class ComponentBuilder {
         return button;
     }
 
-    public JScrollPane createTable(final int gridxValue, final int gridyValue, final JTable jTable) {
+    public final JScrollPane createTable(final int gridxValue, final int gridyValue, final JTable jTable) {
 
         final JScrollPane scrollPane = new JScrollPane(jTable);
         jTable.setFillsViewportHeight(true);
@@ -41,11 +41,11 @@ public class ComponentBuilder {
 
     }
 
-    protected void setName(final Component object, final String objectName) {
+    protected final void setName(final Component object, final String objectName) {
         object.setName(objectName);
     }
 
-    public GridBagConstraints getGridBagConstraints() {
+    public final GridBagConstraints getGridBagConstraints() {
         return this.gridBagConstraints;
 
     }

@@ -41,7 +41,7 @@ public class TabBuilder extends ComponentBuilder {
         return button;
     }
 
-    public JScrollPane createTable(final JPanel jPanel, final int gridxValue, final int gridyValue, final JTable jTable) {
+    public final JScrollPane createTable(final JPanel jPanel, final int gridxValue, final int gridyValue, final JTable jTable) {
 
         final JScrollPane scrollPane = super.createTable(gridxValue, gridyValue, jTable);
         this.setPosition(jPanel, this.gridBagConstraints, gridxValue, gridyValue, scrollPane);

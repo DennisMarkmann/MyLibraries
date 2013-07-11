@@ -175,7 +175,7 @@ public class PrintJob implements Printable {
         }
     }
 
-    private final int getNumberOfPages() {
+    private int getNumberOfPages() {
         final int max = this.getMaxLines();
         final int total = this.textareaForPrint.getLineCount();
         final int pages = (int) Math.ceil((double) total / (double) max);
