@@ -5,7 +5,6 @@ import java.awt.Dimension;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 
-import javax.swing.JButton;
 import javax.swing.JCheckBox;
 import javax.swing.JComboBox;
 import javax.swing.JFrame;
@@ -37,18 +36,18 @@ public class FrameBuilder extends ComponentBuilder {
         frame.setVisible(true);
     }
 
-    public final JButton createButton(
-            final JFrame frame,
-            final String buttonName,
-            final String buttonText,
-            final int gridxValue,
-            final int gridyValue) {
-
-        final JButton button = super.createButton(buttonName, buttonText, gridxValue, gridyValue);
-        this.setPosition(frame, this.getGridBagConstraints(), gridxValue, gridyValue, button);
-
-        return button;
-    }
+    // public final JButton createButton(
+    // final JFrame frame,
+    // final String buttonName,
+    // final String buttonText,
+    // final int gridxValue,
+    // final int gridyValue) {
+    //
+    // final JButton button = super.createButton(frame, buttonName, buttonText, gridxValue, gridyValue);
+    // this.setPosition(frame, this.getGridBagConstraints(), gridxValue, gridyValue, button);
+    //
+    // return button;
+    // }
 
     public final JLabel createLabel(final JFrame frame, final String labelText, final int gridxValue, final int gridyValue) {
         final JLabel label = new JLabel(labelText);
