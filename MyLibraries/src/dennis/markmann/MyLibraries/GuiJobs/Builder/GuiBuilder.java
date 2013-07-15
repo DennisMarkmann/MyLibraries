@@ -34,14 +34,13 @@ public class GuiBuilder {
         this.getGridBagConstraints().fill = GridBagConstraints.BOTH;
     }
 
-    public final void setDefaultFrameSettings(final JFrame frame, final String frameName) {
-
+    public final void setDefaultFrameSettings(final JFrame frame, final String title) {
         // frame.addWindowListener(new MyWindowAdapter(frame));
-        frame.setTitle("GroupBuilder - " + frameName);
+        frame.setTitle(title);
         frame.setSize(new Dimension(400, 200));
-        frame.setLayout(new GridBagLayout());
         frame.setLocationRelativeTo(null);
         frame.setVisible(true);
+        frame.setLayout(new GridBagLayout());
     }
 
     public final void setDefaultTabSettings(final JPanel jPanel) {
