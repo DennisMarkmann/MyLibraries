@@ -27,7 +27,7 @@ public class CheckBoxHelper {
             final String text,
             final int gridxValue,
             final int gridyValue) {
-        final JCheckBox checkBox = new FrameBuilder().createCheckBox(frame, name, text, gridxValue, gridyValue);
+        final JCheckBox checkBox = new GuiBuilder().createCheckBox(frame, name, text, gridxValue, gridyValue);
         this.checkBoxList.add(checkBox);
         checkBox.addItemListener(this.checkBoxListener);
 

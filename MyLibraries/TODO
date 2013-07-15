@@ -1,7 +1,4 @@
 
+1.PrintJob rework
 
-1.GUIBuilder weiter zusammen fassen
-
-2.PrintJob rework
-
-3.Änderungen der Email und Print Einstellungen durch Methoden zulassen
+2.Änderungen der Email und Print Einstellungen durch Methoden zulassen
