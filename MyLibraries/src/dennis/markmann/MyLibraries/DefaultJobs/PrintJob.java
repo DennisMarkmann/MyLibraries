@@ -20,6 +20,7 @@ import javax.swing.text.JTextComponent;
 import javax.swing.text.Utilities;
 
 import dennis.markmann.MyLibraries.Exceptions.PrintOperationException;
+import dennis.markmann.MyLibraries.Exceptions.PrinterSelectionException;
 
 /**
  * Used to print out texts.
@@ -105,6 +106,7 @@ public class PrintJob implements Printable {
         if (page < 0 | page > this.numberOfPages - 1) {
             return false;
         }
+        this.getPrintService();
         this.printerJob.setPrintable(this, this.pageFormat);
         this.textPassage = this.textPassages.get(page);
         try {
@@ -184,5 +186,21 @@ public class PrintJob implements Printable {
 
     private int getMaxLines() {
         return this.textareaForPrint.getHeight() / this.fontMetrics.getHeight();
+    }
+
+    // get defaultPrinter or opens printerSelectionDialog
+    private void getPrintService() {
+        final PrinterSelector instance = PrinterSelector.getInstance();
+        try {
+            if (instance.getService() != null) {
+                this.printerJob.setPrintService(instance.getService());
+            } else {
+                this.printerJob.setPrintService(instance.selectPrinter());
+            }
+        } catch (final PrinterException e) {
+            new PrinterSelectionException(e.getStackTrace()).showDialog();
+            this.getPrintService();
+            return;
+        }
     }
 }
