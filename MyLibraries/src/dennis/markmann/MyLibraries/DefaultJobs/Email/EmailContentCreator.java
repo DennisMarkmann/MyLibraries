@@ -38,7 +38,6 @@ public class EmailContentCreator {
             emailObject.setMailContent(mailContent);
 
         } catch (final MessagingException e) {
-            // TODO
             e.printStackTrace();
         }
 
