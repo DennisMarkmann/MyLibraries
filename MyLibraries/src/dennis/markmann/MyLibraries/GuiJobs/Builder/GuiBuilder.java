@@ -16,7 +16,6 @@ import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.JTextField;
-import javax.swing.table.TableCellRenderer;
 
 /**
  * Builder for many GUI components on GridLayout.
@@ -64,6 +63,7 @@ public class GuiBuilder {
             final String buttonText,
             final int gridxValue,
             final int gridyValue) {
+
         final JButton button = this.componentBuilder.createButton(name, buttonText);
         this.setPosition(panel, this.getGridBagConstraints(), gridxValue, gridyValue, button);
 
@@ -77,8 +77,7 @@ public class GuiBuilder {
             final int gridxValue,
             final int gridyValue) {
 
-        final JTextField textField = new JTextField(textFieldSize);
-        this.setName(textField, name);
+        final JTextField textField = this.componentBuilder.createTextField(name, textFieldSize);
         this.setPosition(frame, this.getGridBagConstraints(), gridxValue, gridyValue, textField);
 
         return textField;
@@ -91,8 +90,7 @@ public class GuiBuilder {
             final int gridxValue,
             final int gridyValue) {
 
-        final JComboBox<String> comboBox = new JComboBox<String>(content);
-        this.setName(comboBox, name);
+        final JComboBox<String> comboBox = this.componentBuilder.createComboBox(name, content);
         this.setPosition(frame, this.getGridBagConstraints(), gridxValue, gridyValue, comboBox);
 
         return comboBox;
@@ -105,9 +103,7 @@ public class GuiBuilder {
             final int gridxValue,
             final int gridyValue) {
 
-        final JCheckBox checkBox = new JCheckBox();
-        checkBox.setText(text);
-        this.setName(checkBox, name);
+        final JCheckBox checkBox = this.componentBuilder.createCheckBox(name, text);
         this.setPosition(frame, this.getGridBagConstraints(), gridxValue, gridyValue, checkBox);
 
         return checkBox;
@@ -120,14 +116,7 @@ public class GuiBuilder {
             final JTable jTable,
             final ArrayList<String> buttonRenderCols) {
 
-        final TableCellRenderer buttonRenderer = new JTableButtonRenderer();
-
-        for (final String rowName : buttonRenderCols) {
-            jTable.getColumn(rowName).setCellRenderer(buttonRenderer);
-        }
-
-        final JScrollPane scrollPane = new JScrollPane(jTable);
-        jTable.setFillsViewportHeight(true);
+        final JScrollPane scrollPane = this.componentBuilder.createTable(jTable, buttonRenderCols);
         this.setPosition(panel, this.getGridBagConstraints(), gridxValue, gridyValue, scrollPane);
 
         return scrollPane;
@@ -137,10 +126,6 @@ public class GuiBuilder {
     public final GridBagConstraints getGridBagConstraints() {
         return this.gridBagConstraints;
 
-    }
-
-    protected final void setName(final Component object, final String objectName) {
-        object.setName(objectName);
     }
 
     private void setPosition(
