@@ -5,6 +5,7 @@ import java.awt.Dimension;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.Insets;
+import java.util.ArrayList;
 
 import javax.swing.JButton;
 import javax.swing.JCheckBox;
@@ -15,6 +16,7 @@ import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.JTextField;
+import javax.swing.table.TableCellRenderer;
 
 /**
  * Builder for many GUI components on GridLayout.
@@ -27,6 +29,7 @@ import javax.swing.JTextField;
 public class GuiBuilder {
 
     private final GridBagConstraints gridBagConstraints = new GridBagConstraints();
+    private final ComponentBuilder componentBuilder = new ComponentBuilder();
 
     public GuiBuilder() {
         this.getGridBagConstraints().insets = new Insets(5, 5, 5, 5);
@@ -61,9 +64,7 @@ public class GuiBuilder {
             final String buttonText,
             final int gridxValue,
             final int gridyValue) {
-
-        final JButton button = new JButton(buttonText);
-        this.setName(button, name);
+        final JButton button = this.componentBuilder.createButton(name, buttonText);
         this.setPosition(panel, this.getGridBagConstraints(), gridxValue, gridyValue, button);
 
         return button;
@@ -112,7 +113,18 @@ public class GuiBuilder {
         return checkBox;
     }
 
-    public final JScrollPane createTable(final Object panel, final int gridxValue, final int gridyValue, final JTable jTable) {
+    public final JScrollPane createTable(
+            final Object panel,
+            final int gridxValue,
+            final int gridyValue,
+            final JTable jTable,
+            final ArrayList<String> buttonRenderCols) {
+
+        final TableCellRenderer buttonRenderer = new JTableButtonRenderer();
+
+        for (final String rowName : buttonRenderCols) {
+            jTable.getColumn(rowName).setCellRenderer(buttonRenderer);
+        }
 
         final JScrollPane scrollPane = new JScrollPane(jTable);
         jTable.setFillsViewportHeight(true);

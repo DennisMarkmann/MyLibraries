@@ -26,8 +26,8 @@ public final class PrinterSelector {
 
     }
 
-    public void setDefaultPrinter() {
-        this.service = PrintServiceLookup.lookupDefaultPrintService();
+    public void setPrinter(final PrintService printService) {
+        this.service = printService;
     }
 
     public static PrinterSelector getInstance() {
