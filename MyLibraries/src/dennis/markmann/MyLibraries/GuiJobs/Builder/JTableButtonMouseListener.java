@@ -23,7 +23,7 @@ public class JTableButtonMouseListener extends MouseAdapter {
     }
 
     @Override
-    public void mouseClicked(final MouseEvent e) {
+    public final void mouseClicked(final MouseEvent e) {
         final int column = this.table.getColumnModel().getColumnIndexAtX(e.getX());
         final int row = e.getY() / this.table.getRowHeight();
 

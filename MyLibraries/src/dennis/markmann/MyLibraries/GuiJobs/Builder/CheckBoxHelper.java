@@ -9,7 +9,7 @@ import javax.swing.JCheckBox;
 import javax.swing.JFrame;
 
 /**
- * Helper class to create new checkBoxes with single select functionality.
+ * Helper class to create new checkBoxes.
  * 
  * @author dennis.markmann
  * @since jdk1.7.0_21
@@ -34,6 +34,14 @@ public class CheckBoxHelper {
         return checkBox;
 
     }
+
+    /**
+     * Used to enable single select functionality for checkBoxes.
+     * 
+     * @author dennis.markmann
+     * @since JDK.1.7.0_21
+     * @version 1.0
+     */
 
     class CheckBoxSelectionListener implements ItemListener {
 

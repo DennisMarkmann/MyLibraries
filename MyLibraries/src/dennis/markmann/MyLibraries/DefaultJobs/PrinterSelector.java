@@ -9,6 +9,14 @@ import javax.print.ServiceUI;
 import javax.print.attribute.HashPrintRequestAttributeSet;
 import javax.print.attribute.PrintRequestAttributeSet;
 
+/**
+ * Used select the printService for the print operation.
+ * 
+ * @author dennis.markmann
+ * @since JDK.1.7.0_21
+ * @version 1.0
+ */
+
 public final class PrinterSelector {
 
     private PrintService service = null;

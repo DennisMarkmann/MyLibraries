@@ -18,7 +18,7 @@ import javax.mail.internet.MimeMultipart;
 
 public class EmailContentCreator {
 
-    public void createMailContent(final String text, final File attachement, final EmailObject emailObject) {
+    public final void createMailContent(final String text, final File attachement, final EmailObject emailObject) {
 
         try {
             final MimeBodyPart textPart = new MimeBodyPart();

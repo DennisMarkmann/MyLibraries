@@ -11,6 +11,14 @@ import javax.swing.JTable;
 import javax.swing.JTextField;
 import javax.swing.table.TableCellRenderer;
 
+/**
+ * Used to create GUI elements.
+ * 
+ * @author dennis.markmann
+ * @since JDK.1.7.0_21
+ * @version 1.0
+ */
+
 public class ComponentBuilder {
 
     public final JButton createButton(final String name, final String buttonText) {
@@ -54,7 +62,7 @@ public class ComponentBuilder {
 
     }
 
-    private final void setName(final Component object, final String objectName) {
+    private void setName(final Component object, final String objectName) {
         object.setName(objectName);
     }
 
