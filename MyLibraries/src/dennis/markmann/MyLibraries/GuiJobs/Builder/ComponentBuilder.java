@@ -45,6 +45,7 @@ public class ComponentBuilder {
         for (final String rowName : buttonRenderCols) {
             jTable.getColumn(rowName).setCellRenderer(buttonRenderer);
         }
+        jTable.addMouseListener(new JTableButtonMouseListener(jTable));
 
         final JScrollPane scrollPane = new JScrollPane(jTable);
         jTable.setFillsViewportHeight(true);
