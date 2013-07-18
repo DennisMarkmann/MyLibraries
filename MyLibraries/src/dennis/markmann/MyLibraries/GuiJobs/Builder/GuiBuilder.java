@@ -50,9 +50,9 @@ public class GuiBuilder {
         this.getGridBagConstraints().fill = GridBagConstraints.HORIZONTAL;
     }
 
-    public final JLabel createLabel(final JFrame frame, final String labelText, final int gridxValue, final int gridyValue) {
+    public final JLabel createLabel(final Object panel, final String labelText, final int gridxValue, final int gridyValue) {
         final JLabel label = new JLabel(labelText);
-        this.setPosition(frame, this.getGridBagConstraints(), gridxValue, gridyValue, label);
+        this.setPosition(panel, this.getGridBagConstraints(), gridxValue, gridyValue, label);
 
         return label;
     }
@@ -71,40 +71,40 @@ public class GuiBuilder {
     }
 
     public final JTextField createTextField(
-            final JFrame frame,
+            final Object panel,
             final String name,
             final int textFieldSize,
             final int gridxValue,
             final int gridyValue) {
 
         final JTextField textField = this.componentBuilder.createTextField(name, textFieldSize);
-        this.setPosition(frame, this.getGridBagConstraints(), gridxValue, gridyValue, textField);
+        this.setPosition(panel, this.getGridBagConstraints(), gridxValue, gridyValue, textField);
 
         return textField;
     }
 
     public final JComboBox<String> createComboBox(
-            final JFrame frame,
+            final Object panel,
             final String name,
             final String[] content,
             final int gridxValue,
             final int gridyValue) {
 
         final JComboBox<String> comboBox = this.componentBuilder.createComboBox(name, content);
-        this.setPosition(frame, this.getGridBagConstraints(), gridxValue, gridyValue, comboBox);
+        this.setPosition(panel, this.getGridBagConstraints(), gridxValue, gridyValue, comboBox);
 
         return comboBox;
     }
 
     public final JCheckBox createCheckBox(
-            final JFrame frame,
+            final Object panel,
             final String name,
             final String text,
             final int gridxValue,
             final int gridyValue) {
 
         final JCheckBox checkBox = this.componentBuilder.createCheckBox(name, text);
-        this.setPosition(frame, this.getGridBagConstraints(), gridxValue, gridyValue, checkBox);
+        this.setPosition(panel, this.getGridBagConstraints(), gridxValue, gridyValue, checkBox);
 
         return checkBox;
     }
