@@ -17,7 +17,7 @@ public class PrinterSelectionException extends Exception implements ExceptionDia
     private static final long serialVersionUID = -4565962119370664301L;
 
     public PrinterSelectionException(final StackTraceElement[] stackTraceElements) {
-        super("An error appeared while choosing the printer.");
+        super("An error appeared while choosing the printer. The systems default printer was chosen.");
     }
 
     @Override

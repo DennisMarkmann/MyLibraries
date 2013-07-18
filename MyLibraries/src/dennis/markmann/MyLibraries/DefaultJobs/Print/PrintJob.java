@@ -13,6 +13,7 @@ import java.awt.print.PrinterJob;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.print.PrintServiceLookup;
 import javax.swing.JTextArea;
 import javax.swing.JWindow;
 import javax.swing.text.BadLocationException;
@@ -47,6 +48,7 @@ public class PrintJob implements Printable {
 
     public PrintJob(final String printText) {
 
+        this.getPrintService();
         this.fontForPrint = new Font("Arial", Font.PLAIN, 16 * CONS);
         this.pageFormat = new PageFormat();
 
@@ -103,7 +105,6 @@ public class PrintJob implements Printable {
         if (page < 0 | page > this.numberOfPages - 1) {
             return false;
         }
-        this.getPrintService();
         this.printerJob.setPrintable(this, this.pageFormat);
         this.textPassage = this.textPassages.get(page);
         try {
@@ -195,8 +196,9 @@ public class PrintJob implements Printable {
                 this.printerJob.setPrintService(instance.selectPrinter());
             }
         } catch (final PrinterException e) {
-            new PrinterSelectionException(e.getStackTrace()).showDialog();
+            instance.setPrinter(PrintServiceLookup.lookupDefaultPrintService());
             this.getPrintService();
+            new PrinterSelectionException(e.getStackTrace()).showDialog();
             return;
         }
     }
