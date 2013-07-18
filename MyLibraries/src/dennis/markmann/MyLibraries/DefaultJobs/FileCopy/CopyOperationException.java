@@ -1,6 +1,8 @@
-package dennis.markmann.MyLibraries.Exceptions;
+package dennis.markmann.MyLibraries.DefaultJobs.FileCopy;
 
 import javax.swing.JOptionPane;
+
+import dennis.markmann.MyLibraries.Exceptions.ExceptionDialogInterface;
 
 /**
  * Exception thrown if a file can't be copied.

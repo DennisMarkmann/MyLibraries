@@ -1,11 +1,9 @@
-package dennis.markmann.MyLibraries.DefaultJobs;
+package dennis.markmann.MyLibraries.DefaultJobs.IconHelper;
 
 import java.io.IOException;
 
 import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
-
-import dennis.markmann.MyLibraries.Exceptions.FileNotFoundException;
 
 /**
  * Used to enable the getIcon method for other classes.

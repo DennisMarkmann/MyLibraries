@@ -1,4 +1,4 @@
-package dennis.markmann.MyLibraries.DefaultJobs;
+package dennis.markmann.MyLibraries.DefaultJobs.FileCopy;
 
 import java.io.File;
 import java.io.FileInputStream;
@@ -6,8 +6,6 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.nio.channels.ByteChannel;
 import java.nio.channels.FileChannel;
-
-import dennis.markmann.MyLibraries.Exceptions.CopyOperationException;
 
 /**
  * Used to create a copy of a given source at a selected destination.

@@ -1,6 +1,8 @@
-package dennis.markmann.MyLibraries.Exceptions;
+package dennis.markmann.MyLibraries.DefaultJobs.Print;
 
 import javax.swing.JOptionPane;
+
+import dennis.markmann.MyLibraries.Exceptions.ExceptionDialogInterface;
 
 /**
  * Exception thrown if a the print operation fails.

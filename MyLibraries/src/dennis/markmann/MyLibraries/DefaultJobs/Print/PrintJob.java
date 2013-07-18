@@ -1,4 +1,4 @@
-package dennis.markmann.MyLibraries.DefaultJobs;
+package dennis.markmann.MyLibraries.DefaultJobs.Print;
 
 import java.awt.Dimension;
 import java.awt.Font;
@@ -18,9 +18,6 @@ import javax.swing.JWindow;
 import javax.swing.text.BadLocationException;
 import javax.swing.text.JTextComponent;
 import javax.swing.text.Utilities;
-
-import dennis.markmann.MyLibraries.Exceptions.PrintOperationException;
-import dennis.markmann.MyLibraries.Exceptions.PrinterSelectionException;
 
 /**
  * Used to print out texts.

@@ -8,7 +8,7 @@ package dennis.markmann.MyLibraries.Exceptions;
  * @version 1.0
  */
 
-interface ExceptionDialogInterface {
+public interface ExceptionDialogInterface {
 
     void showDialog();
 }

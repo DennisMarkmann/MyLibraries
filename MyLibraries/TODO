@@ -2,7 +2,3 @@
 1.PrintJob rework
 
 2.Änderungen der Email und Print Einstellungen durch Methoden zulassen
-
-3.Exceptions in die entsprechenden Packages der Funktionen packen
-
-4.Struktur der Projekte überarbeiten (einzel Packages für mehrere zusammengehörige)

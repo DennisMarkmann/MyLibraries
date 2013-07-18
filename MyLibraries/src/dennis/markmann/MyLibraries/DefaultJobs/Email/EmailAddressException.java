@@ -1,6 +1,8 @@
-package dennis.markmann.MyLibraries.Exceptions;
+package dennis.markmann.MyLibraries.DefaultJobs.Email;
 
 import javax.swing.JOptionPane;
+
+import dennis.markmann.MyLibraries.Exceptions.ExceptionDialogInterface;
 
 /**
  * Exception thrown if a the E-Mail address is not valid.

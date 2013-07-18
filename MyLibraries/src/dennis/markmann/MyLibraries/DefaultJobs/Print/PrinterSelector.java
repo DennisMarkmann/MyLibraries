@@ -1,4 +1,4 @@
-package dennis.markmann.MyLibraries.DefaultJobs;
+package dennis.markmann.MyLibraries.DefaultJobs.Print;
 
 import java.awt.GraphicsEnvironment;
 
