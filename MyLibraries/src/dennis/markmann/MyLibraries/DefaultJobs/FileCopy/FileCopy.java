@@ -19,6 +19,19 @@ public class FileCopy {
 
     private final long chunckSizeInBytes = 1024 * 1024;
 
+    public final void copyFolder(final String sourceFolder, final String destinationFolder) {
+
+        for (final File file : new File(sourceFolder).listFiles()) {
+            if (!file.isDirectory()) {
+                this.copy(file.getPath(), this.changeSourceToDestinationPath(file.getPath(), sourceFolder, destinationFolder));
+            } else {
+                final String destination = this.changeSourceToDestinationPath(file.getPath(), sourceFolder, destinationFolder);
+                new File(destination).mkdirs();
+                this.copyFolder(file.getAbsolutePath(), destination);
+            }
+        }
+    }
+
     public final void copy(final String source, final String destination) {
         try {
 
@@ -57,4 +70,12 @@ public class FileCopy {
             overallBytesTransfered += bytesTransfered;
         }
     }
+
+    private String changeSourceToDestinationPath(
+            final String filePath,
+            final String sourceFolder,
+            final String destinationFolder) {
+        return destinationFolder + filePath.substring(filePath.indexOf(sourceFolder) + sourceFolder.length());
+    }
+
 }
