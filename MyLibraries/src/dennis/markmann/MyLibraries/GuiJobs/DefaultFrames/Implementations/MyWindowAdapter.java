@@ -21,6 +21,6 @@ public class MyWindowAdapter extends WindowAdapter {
 
     @Override
     public final void windowClosing(final WindowEvent e) {
-        this.frame.closeWindow();
+        this.frame.openClosingDialog();
     }
 }

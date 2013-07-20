@@ -15,7 +15,7 @@ public interface DefaultFrame {
     GuiBuilder BUILDER = new GuiBuilder();
     int TEXT_FIELD_SIZE = 5;
 
-    void closeWindow();
+    void openClosingDialog();
 
-    void dispose();
+    void closeWindow();
 }
