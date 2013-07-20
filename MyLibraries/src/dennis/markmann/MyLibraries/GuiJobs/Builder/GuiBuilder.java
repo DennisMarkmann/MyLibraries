@@ -38,6 +38,7 @@ public class GuiBuilder {
 
     public final void setDefaultFrameSettings(final JFrame frame, final String title) {
         // frame.addWindowListener(new MyWindowAdapter(frame));
+        frame.setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
         frame.setTitle(title);
         frame.setSize(new Dimension(400, 200));
         frame.setLocationRelativeTo(null);
