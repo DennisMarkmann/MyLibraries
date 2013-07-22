@@ -31,43 +31,43 @@ public class EmailSettings {
 
     }
 
-    public String getUsername() {
+    public final String getUsername() {
         return this.username;
     }
 
-    public void setUsername(final String username) {
+    public final void setUsername(final String username) {
         this.username = username;
     }
 
-    public String getPassword() {
+    public final String getPassword() {
         return this.password;
     }
 
-    public void setPassword(final String password) {
+    public final void setPassword(final String password) {
         this.password = password;
     }
 
-    public String getSenderAddress() {
+    public final String getSenderAddress() {
         return this.senderAddress;
     }
 
-    public void setSenderAddress(final String senderAddress) {
+    public final void setSenderAddress(final String senderAddress) {
         this.senderAddress = senderAddress;
     }
 
-    public String getSubject() {
+    public final String getSubject() {
         return this.subject;
     }
 
-    public void setSubject(final String subject) {
+    public final void setSubject(final String subject) {
         this.subject = subject;
     }
 
-    public String getSmtpHost() {
+    public final String getSmtpHost() {
         return this.smtpHost;
     }
 
-    public void setSmtpHost(final String smtpHost) {
+    public final void setSmtpHost(final String smtpHost) {
         this.smtpHost = smtpHost;
     }
 
