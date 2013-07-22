@@ -23,25 +23,20 @@ import javax.mail.internet.MimeMessage;
 
 public class EmailJob {
 
-    public final void sendMail(
-            final String smtpHost,
-            final String username,
-            final String password,
-            final String senderAddress,
-            final String subject,
-            final ArrayList<EmailObject> emailList) {
+    public final void sendMail(final EmailSettings emailSettings, final ArrayList<EmailObject> emailList) {
 
         final Properties properties = new Properties();
-        properties.put("mail.smtp.host", smtpHost);
+        properties.put("mail.smtp.host", emailSettings.getSmtpHost());
         properties.setProperty("mail.smtp.port", "587");
         properties.put("mail.smtp.auth", "true");
 
-        final MailAuthenticator auth = new MailAuthenticator(username, password);
+        final MailAuthenticator auth = new MailAuthenticator(emailSettings.getUsername(), emailSettings.getPassword());
         final Session session = Session.getDefaultInstance(properties, auth);
 
         try {
             final Message msg = new MimeMessage(session);
-            msg.setFrom(new InternetAddress(senderAddress));
+            msg.setFrom(new InternetAddress(emailSettings.getSenderAddress()));
+            final String subject = emailSettings.getSubject();
             msg.setSubject(subject);
             msg.setHeader(subject, subject);
             msg.setSentDate(new Date());
