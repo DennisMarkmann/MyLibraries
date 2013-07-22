@@ -1,11 +1,14 @@
 package dennis.markmann.MyLibraries.GuiJobs.Builder;
 
 import java.awt.Component;
+import java.awt.FlowLayout;
 import java.util.ArrayList;
 
 import javax.swing.JButton;
 import javax.swing.JCheckBox;
 import javax.swing.JComboBox;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.JTextField;
@@ -27,10 +30,40 @@ public class ComponentBuilder {
         return button;
     }
 
+    public final JLabel createLabel(final String labelText) {
+        return new JLabel(labelText);
+
+    }
+
     public final JTextField createTextField(final String name, final int textFieldSize) {
         final JTextField textField = new JTextField(textFieldSize);
         this.setName(textField, name);
         return textField;
+    }
+
+    public JPanel createCombiPanel(
+            final Object panel,
+            final String buttonName,
+            final String buttonText,
+            final String textFieldName,
+            final int textFieldSize,
+            final int gridxValue,
+            final int gridyValue) {
+
+        final JPanel combiPanel = new JPanel();
+
+        final JTextField textField = new JTextField(textFieldSize);
+        textField.setName(textFieldName);
+
+        final JButton button = new JButton(buttonText);
+        button.setName(buttonName);
+
+        combiPanel.setLayout(new FlowLayout());
+        combiPanel.add(textField);
+        combiPanel.add(button);
+
+        return combiPanel;
+
     }
 
     public final JComboBox<String> createComboBox(final String name, final String[] content) {

@@ -52,7 +52,7 @@ public class GuiBuilder {
     }
 
     public final JLabel createLabel(final Object panel, final String labelText, final int gridxValue, final int gridyValue) {
-        final JLabel label = new JLabel(labelText);
+        final JLabel label = this.componentBuilder.createLabel(labelText);
         this.setPosition(panel, this.getGridBagConstraints(), gridxValue, gridyValue, label);
 
         return label;
@@ -82,6 +82,29 @@ public class GuiBuilder {
         this.setPosition(panel, this.getGridBagConstraints(), gridxValue, gridyValue, textField);
 
         return textField;
+    }
+
+    public JPanel createCombiPanel(
+            final Object panel,
+            final String buttonName,
+            final String buttonText,
+            final String textFieldName,
+            final int textFieldSize,
+            final int gridxValue,
+            final int gridyValue) {
+
+        final JPanel combiPanel = this.componentBuilder.createCombiPanel(
+                panel,
+                buttonName,
+                buttonText,
+                textFieldName,
+                textFieldSize,
+                gridxValue,
+                gridyValue);
+        this.setPosition(panel, this.getGridBagConstraints(), gridxValue, gridyValue, combiPanel);
+
+        return combiPanel;
+
     }
 
     public final JComboBox<String> createComboBox(
