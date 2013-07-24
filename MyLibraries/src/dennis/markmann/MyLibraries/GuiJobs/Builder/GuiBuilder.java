@@ -84,10 +84,13 @@ public class GuiBuilder {
         return textField;
     }
 
-    public JPanel createCombiPanel(final Object panel, final int gridxValue, final int gridyValue) {
+    public JPanel createPanel(final Object panel, final int gridxValue, final int gridyValue, final int width) {
 
+        final int tmpWidth = this.getGridBagConstraints().gridwidth;
+        this.getGridBagConstraints().gridwidth = width;
         final JPanel newPanel = new JPanel();
         this.setPosition(panel, this.getGridBagConstraints(), gridxValue, gridyValue, newPanel);
+        this.getGridBagConstraints().gridwidth = tmpWidth;
 
         return newPanel;
 
