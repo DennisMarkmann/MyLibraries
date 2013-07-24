@@ -1,7 +1,6 @@
 package dennis.markmann.MyLibraries.GuiJobs.Builder;
 
 import java.awt.Component;
-import java.awt.FlowLayout;
 import java.util.ArrayList;
 
 import javax.swing.JButton;
@@ -58,7 +57,6 @@ public class ComponentBuilder {
         final JButton button = new JButton(buttonText);
         button.setName(buttonName);
 
-        combiPanel.setLayout(new FlowLayout());
         combiPanel.add(textField);
         combiPanel.add(button);
 
