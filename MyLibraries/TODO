@@ -2,3 +2,5 @@
 1.PrintJob rework
 
 2.Änderungen der Print Einstellungen durch Methoden zulassen
+
+3.Tabellen automatisch auf Änderungen reagieren lassen (TableModelListener)
