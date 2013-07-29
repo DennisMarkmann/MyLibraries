@@ -22,6 +22,6 @@ public class PrinterSelectionException extends Exception implements ExceptionDia
 
     @Override
     public final void showDialog() {
-        JOptionPane.showMessageDialog(null, this.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
+        JOptionPane.showMessageDialog(null, this.getMessage(), "Warning", JOptionPane.ERROR_MESSAGE);
     }
 }
