@@ -29,7 +29,7 @@ public class JTableButtonMouseListener extends MouseAdapter {
         final int index = this.table.columnAtPoint(e.getPoint());
 
         if (index >= 0) {
-            System.out.println(this.table.getColumnName(index));
+            // System.out.println(this.table.getColumnName(index));
         }
 
         if (row < this.table.getRowCount() && row >= 0 && column < this.table.getColumnCount() && column >= 0) {
