@@ -3,6 +3,7 @@ package dennis.markmann.MyLibraries.DefaultJobs.Email;
 import javax.swing.JOptionPane;
 
 import dennis.markmann.MyLibraries.Exceptions.ExceptionDialogInterface;
+import dennis.markmann.MyLibraries.General.LanguageChooser;
 
 /**
  * Exception thrown if a the E-Mail address is not valid.
@@ -17,7 +18,8 @@ public class EmailAddressException extends Exception implements ExceptionDialogI
     private static final long serialVersionUID = -4565962119370664301L;
 
     public EmailAddressException(final StackTraceElement[] stackTraceElements, final String emailAddress) {
-        super("The E-Mail address \"" + emailAddress + "\" is not valid.");
+        super(LanguageChooser.getMessages("EmailAddressExceptionLineOne") + emailAddress
+                + LanguageChooser.getMessages("EmailAddressExceptionLineTwo"));
     }
 
     @Override

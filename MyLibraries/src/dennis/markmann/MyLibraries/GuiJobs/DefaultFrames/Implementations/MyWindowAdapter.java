@@ -3,6 +3,8 @@ package dennis.markmann.MyLibraries.GuiJobs.DefaultFrames.Implementations;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 
+import dennis.markmann.MyLibraries.General.LanguageChooser;
+
 /**
  * Self created window adapter. Used to overwrite the windowClosing operation and enable proper closing for instanced fames.
  * 
@@ -21,6 +23,6 @@ public class MyWindowAdapter extends WindowAdapter {
 
     @Override
     public final void windowClosing(final WindowEvent e) {
-        this.frame.openClosingDialog("close the window");
+        this.frame.openClosingDialog(LanguageChooser.getMessages("CloseWindow"));
     }
 }

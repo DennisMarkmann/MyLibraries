@@ -5,6 +5,8 @@ import java.io.File;
 import javax.swing.JFileChooser;
 import javax.swing.filechooser.FileFilter;
 
+import dennis.markmann.MyLibraries.General.LanguageChooser;
+
 /**
  * Frame to select a directory and return it.
  * 
@@ -27,7 +29,7 @@ public class PathChooser {
 
             @Override
             public String getDescription() {
-                return "Directory";
+                return LanguageChooser.getMessages("Directory");
             }
         });
 

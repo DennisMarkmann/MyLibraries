@@ -3,6 +3,7 @@ package dennis.markmann.MyLibraries.DefaultJobs.Print;
 import javax.swing.JOptionPane;
 
 import dennis.markmann.MyLibraries.Exceptions.ExceptionDialogInterface;
+import dennis.markmann.MyLibraries.General.LanguageChooser;
 
 /**
  * Exception thrown if a the print operation fails.
@@ -17,7 +18,7 @@ public class PrinterSelectionException extends Exception implements ExceptionDia
     private static final long serialVersionUID = -4565962119370664301L;
 
     public PrinterSelectionException(final StackTraceElement[] stackTraceElements) {
-        super("An error appeared while choosing the printer. The systems default printer was chosen.");
+        super(LanguageChooser.getMessages("PrintSelectionException"));
     }
 
     @Override

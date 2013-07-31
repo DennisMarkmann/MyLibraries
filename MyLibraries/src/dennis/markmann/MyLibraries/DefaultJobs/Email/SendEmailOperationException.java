@@ -3,6 +3,7 @@ package dennis.markmann.MyLibraries.DefaultJobs.Email;
 import javax.swing.JOptionPane;
 
 import dennis.markmann.MyLibraries.Exceptions.ExceptionDialogInterface;
+import dennis.markmann.MyLibraries.General.LanguageChooser;
 
 /**
  * Exception thrown if a the sendEmail operation fails.
@@ -17,8 +18,8 @@ public class SendEmailOperationException extends Exception implements ExceptionD
     private static final long serialVersionUID = -4565962119370664301L;
 
     public SendEmailOperationException(final StackTraceElement[] stackTraceElements) {
-        super("An error appeared while trying to send an e-mail."
-                + " Please disable your firewall and check your network connection before trying again.");
+        super(LanguageChooser.getMessages("SendEmailOperationExceptionLineOne")
+                + LanguageChooser.getMessages("SendEmailOperationExceptionLineTwo"));
     }
 
     @Override

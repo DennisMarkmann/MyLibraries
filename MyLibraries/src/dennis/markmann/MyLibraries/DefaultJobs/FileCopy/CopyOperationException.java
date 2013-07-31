@@ -3,6 +3,7 @@ package dennis.markmann.MyLibraries.DefaultJobs.FileCopy;
 import javax.swing.JOptionPane;
 
 import dennis.markmann.MyLibraries.Exceptions.ExceptionDialogInterface;
+import dennis.markmann.MyLibraries.General.LanguageChooser;
 
 /**
  * Exception thrown if a file can't be copied.
@@ -17,7 +18,7 @@ public class CopyOperationException extends Exception implements ExceptionDialog
     private static final long serialVersionUID = 6498733673905740756L;
 
     public CopyOperationException(final String path, final StackTraceElement[] stackTraceElements) {
-        super("An error occured while copying the file: \"" + path + "\"");
+        super(LanguageChooser.getMessages("CopyOperationException") + path + "\"");
     }
 
     @Override

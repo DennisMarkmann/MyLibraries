@@ -3,6 +3,7 @@ package dennis.markmann.MyLibraries.DefaultJobs.IconHelper;
 import javax.swing.JOptionPane;
 
 import dennis.markmann.MyLibraries.Exceptions.ExceptionDialogInterface;
+import dennis.markmann.MyLibraries.General.LanguageChooser;
 
 /**
  * Exception thrown if a file can't be found.
@@ -17,7 +18,7 @@ public class FileNotFoundException extends Exception implements ExceptionDialogI
     private static final long serialVersionUID = 6498733673905740756L;
 
     public FileNotFoundException(final String path, final StackTraceElement[] stackTraceElements) {
-        super("An error occured while reading the file: \"" + path + "\"");
+        super(LanguageChooser.getMessages("FileNotFoundException") + path + "\"");
     }
 
     @Override
