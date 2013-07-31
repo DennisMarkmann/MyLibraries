@@ -14,7 +14,7 @@ import java.util.ResourceBundle;
 public class LanguageChooser {
 
     private static ResourceBundle messages = ResourceBundle.getBundle(
-            "dennis/markmann/MyLibraries/General/Properties/LanguageFile",
+            "dennis/markmann/MyLibraries/General/LanguageFiles/LanguageFile",
             new Locale("en", "US"));
 
     public void chooseLanguage(final String givenLanguage) {
