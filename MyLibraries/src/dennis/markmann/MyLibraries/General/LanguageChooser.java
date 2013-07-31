@@ -3,6 +3,14 @@ package dennis.markmann.MyLibraries.General;
 import java.util.Locale;
 import java.util.ResourceBundle;
 
+/**
+ * Used to change the language for the application. Default language is English.
+ * 
+ * @author dennis.markmann
+ * @since JDK.1.7.0_21
+ * @version 1.0
+ */
+
 public class LanguageChooser {
 
     private static ResourceBundle messages = ResourceBundle.getBundle(
@@ -24,7 +32,7 @@ public class LanguageChooser {
             language = new String("en");
             country = new String("US");
         }
-        messages = ResourceBundle.getBundle("dennis/markmann/MyLibraries/General/Properties/LanguageFile", new Locale(
+        messages = ResourceBundle.getBundle("dennis/markmann/MyLibraries/General/LanguageFiles/LanguageFile", new Locale(
                 language,
                 country));
     }
