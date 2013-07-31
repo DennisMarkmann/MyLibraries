@@ -13,11 +13,11 @@ import dennis.markmann.MyLibraries.General.LanguageChooser;
  * @version 1.0
  */
 
-public class EmailAddressException extends Exception implements ExceptionDialogInterface {
+class EmailAddressException extends Exception implements ExceptionDialogInterface {
 
     private static final long serialVersionUID = -4565962119370664301L;
 
-    public EmailAddressException(final StackTraceElement[] stackTraceElements, final String emailAddress) {
+    EmailAddressException(final StackTraceElement[] stackTraceElements, final String emailAddress) {
         super(LanguageChooser.getMessages("EmailAddressExceptionLineOne") + emailAddress
                 + LanguageChooser.getMessages("EmailAddressExceptionLineTwo"));
     }

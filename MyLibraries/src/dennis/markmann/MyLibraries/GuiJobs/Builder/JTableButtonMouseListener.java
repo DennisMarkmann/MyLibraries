@@ -14,11 +14,11 @@ import javax.swing.JTable;
  * @version 1.0
  */
 
-public class JTableButtonMouseListener extends MouseAdapter {
+class JTableButtonMouseListener extends MouseAdapter {
 
     private final JTable table;
 
-    public JTableButtonMouseListener(final JTable table) {
+    JTableButtonMouseListener(final JTable table) {
         this.table = table;
     }
 
@@ -29,6 +29,7 @@ public class JTableButtonMouseListener extends MouseAdapter {
         final int index = this.table.columnAtPoint(e.getPoint());
 
         if (index >= 0) {
+            // TODO
             // System.out.println(this.table.getColumnName(index));
         }
 

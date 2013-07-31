@@ -17,7 +17,7 @@ public class LanguageChooser {
             "dennis/markmann/MyLibraries/General/LanguageFiles/LanguageFile",
             new Locale("en", "US"));
 
-    public void chooseLanguage(final String givenLanguage) {
+    public final void chooseLanguage(final String givenLanguage) {
 
         String language = "";
         String country = "";

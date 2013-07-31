@@ -13,11 +13,11 @@ import dennis.markmann.MyLibraries.General.LanguageChooser;
  * @version 1.0
  */
 
-public class SendEmailOperationException extends Exception implements ExceptionDialogInterface {
+class SendEmailOperationException extends Exception implements ExceptionDialogInterface {
 
     private static final long serialVersionUID = -4565962119370664301L;
 
-    public SendEmailOperationException(final StackTraceElement[] stackTraceElements) {
+    SendEmailOperationException(final StackTraceElement[] stackTraceElements) {
         super(LanguageChooser.getMessages("SendEmailOperationExceptionLineOne")
                 + LanguageChooser.getMessages("SendEmailOperationExceptionLineTwo"));
     }

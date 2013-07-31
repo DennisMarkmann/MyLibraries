@@ -43,11 +43,11 @@ public class CheckBoxHelper {
      * @version 1.0
      */
 
-    class CheckBoxSelectionListener implements ItemListener {
+    private class CheckBoxSelectionListener implements ItemListener {
 
         private final List<JCheckBox> checkBoxList;
 
-        public CheckBoxSelectionListener(final List<JCheckBox> checkBoxList) {
+        private CheckBoxSelectionListener(final List<JCheckBox> checkBoxList) {
             this.checkBoxList = checkBoxList;
         }
 

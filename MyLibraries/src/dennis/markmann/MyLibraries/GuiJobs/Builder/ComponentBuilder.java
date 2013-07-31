@@ -40,7 +40,7 @@ public class ComponentBuilder {
         return textField;
     }
 
-    public JPanel createCombiPanel(
+    public final JPanel createCombiPanel(
             final Object panel,
             final String buttonName,
             final String buttonText,

@@ -15,7 +15,7 @@ import javax.swing.table.TableCellRenderer;
  * @version 1.0
  */
 
-public class JTableButtonRenderer implements TableCellRenderer {
+class JTableButtonRenderer implements TableCellRenderer {
 
     @Override
     public final Component getTableCellRendererComponent(

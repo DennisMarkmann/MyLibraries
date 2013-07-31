@@ -13,11 +13,11 @@ import dennis.markmann.MyLibraries.General.LanguageChooser;
  * @version 1.0
  */
 
-public class PrintOperationException extends Exception implements ExceptionDialogInterface {
+class PrintOperationException extends Exception implements ExceptionDialogInterface {
 
     private static final long serialVersionUID = -4565962119370664301L;
 
-    public PrintOperationException(final StackTraceElement[] stackTraceElements) {
+    PrintOperationException(final StackTraceElement[] stackTraceElements) {
         super(LanguageChooser.getMessages("PrintOperationException"));
     }
 

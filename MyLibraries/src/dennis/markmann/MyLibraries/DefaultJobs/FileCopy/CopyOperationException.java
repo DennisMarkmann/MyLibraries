@@ -13,11 +13,11 @@ import dennis.markmann.MyLibraries.General.LanguageChooser;
  * @version 1.0
  */
 
-public class CopyOperationException extends Exception implements ExceptionDialogInterface {
+class CopyOperationException extends Exception implements ExceptionDialogInterface {
 
     private static final long serialVersionUID = 6498733673905740756L;
 
-    public CopyOperationException(final String path, final StackTraceElement[] stackTraceElements) {
+    CopyOperationException(final String path, final StackTraceElement[] stackTraceElements) {
         super(LanguageChooser.getMessages("CopyOperationException") + path + "\"");
     }
 

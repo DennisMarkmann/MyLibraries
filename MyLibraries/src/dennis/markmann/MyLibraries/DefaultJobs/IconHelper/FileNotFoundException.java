@@ -13,11 +13,11 @@ import dennis.markmann.MyLibraries.General.LanguageChooser;
  * @version 1.0
  */
 
-public class FileNotFoundException extends Exception implements ExceptionDialogInterface {
+class FileNotFoundException extends Exception implements ExceptionDialogInterface {
 
     private static final long serialVersionUID = 6498733673905740756L;
 
-    public FileNotFoundException(final String path, final StackTraceElement[] stackTraceElements) {
+    FileNotFoundException(final String path, final StackTraceElement[] stackTraceElements) {
         super(LanguageChooser.getMessages("FileNotFoundException") + path + "\"");
     }
 

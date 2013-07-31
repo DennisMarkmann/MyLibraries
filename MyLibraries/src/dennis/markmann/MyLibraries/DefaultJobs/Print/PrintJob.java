@@ -48,7 +48,7 @@ public class PrintJob implements Printable {
         }
     }
 
-    public void changeFont(final String name, final int style, final int size) {
+    public final void changeFont(final String name, final int style, final int size) {
         this.font = new Font(name, style, size);
     }
 
