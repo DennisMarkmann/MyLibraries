@@ -18,28 +18,35 @@ import javax.mail.internet.MimeMultipart;
 
 public class EmailContentCreator {
 
-    public final void createMailContent(final String text, final File attachement, final EmailObject emailObject) {
+	public final void createMailContent(final String text,
+			final File attachement, final EmailObject emailObject) {
 
-        try {
-            final MimeBodyPart textPart = new MimeBodyPart();
-            textPart.setText(text);
-            textPart.setDisposition(MimeBodyPart.INLINE);
+		try {
+			final MimeBodyPart textPart = new MimeBodyPart();
+			textPart.setText(text);
+			textPart.setDisposition(MimeBodyPart.INLINE);
+			final MimeBodyPart attachementPart = new MimeBodyPart();
 
-            final MimeBodyPart attachementPart = new MimeBodyPart();
-            attachementPart.setDataHandler(new DataHandler(new FileDataSource(attachement)));
-            attachementPart.setFileName(attachement.getName());
-            attachementPart.setDisposition(MimeBodyPart.ATTACHMENT);
+			if (attachement != null) {
+				attachementPart.setDataHandler(new DataHandler(
+						new FileDataSource(attachement)));
+				attachementPart.setFileName(attachement.getName());
+				attachementPart.setDisposition(MimeBodyPart.ATTACHMENT);
+			}
 
-            final MimeMultipart mailContent = new MimeMultipart();
+			final MimeMultipart mailContent = new MimeMultipart();
 
-            mailContent.addBodyPart(textPart);
-            mailContent.addBodyPart(attachementPart);
+			mailContent.addBodyPart(textPart);
 
-            emailObject.setMailContent(mailContent);
+			if (attachement != null) {
+				mailContent.addBodyPart(attachementPart);
+			}
 
-        } catch (final MessagingException e) {
-            e.printStackTrace();
-        }
+			emailObject.setMailContent(mailContent);
 
-    }
+		} catch (final MessagingException e) {
+			e.printStackTrace();
+		}
+
+	}
 }
