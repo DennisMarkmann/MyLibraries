@@ -2,3 +2,5 @@
 1.PrintJob weiter optimieren
 
 2.Tabellen automatisch auf Änderungen reagieren lassen (TableModelListener)
+
+3. MigLayout testen für den GUI Builder
