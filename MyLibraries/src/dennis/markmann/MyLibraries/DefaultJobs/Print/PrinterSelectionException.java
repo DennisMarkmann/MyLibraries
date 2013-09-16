@@ -1,10 +1,5 @@
 package dennis.markmann.MyLibraries.DefaultJobs.Print;
 
-import javax.swing.JOptionPane;
-
-import dennis.markmann.MyLibraries.Exceptions.ExceptionDialogInterface;
-import dennis.markmann.MyLibraries.General.LanguageChooser;
-
 /**
  * Exception thrown if a the print operation fails.
  * 
@@ -13,16 +8,29 @@ import dennis.markmann.MyLibraries.General.LanguageChooser;
  * @version 1.0
  */
 
-class PrinterSelectionException extends Exception implements ExceptionDialogInterface {
+public class PrinterSelectionException extends Exception {
 
-    private static final long serialVersionUID = -4565962119370664301L;
+	private final String errorTitel = "PrinterSelectionException";
+	private final String errorMessage = "An error appeared while trying to select the chosen printer.";
+	private final StackTraceElement[] stackTraceElements;
 
-    PrinterSelectionException(final StackTraceElement[] stackTraceElements) {
-        super(LanguageChooser.getMessages("PrintSelectionException"));
-    }
+	private static final long serialVersionUID = -4565962119370664301L;
 
-    @Override
-    public final void showDialog() {
-        JOptionPane.showMessageDialog(null, this.getMessage(), "Warning", JOptionPane.WARNING_MESSAGE);
-    }
+	PrinterSelectionException(final StackTraceElement[] stackTraceElements) {
+
+		this.stackTraceElements = stackTraceElements;
+	}
+
+	public String getErrortitel() {
+		return this.errorTitel;
+	}
+
+	public String getErrormessage() {
+		return this.errorMessage;
+	}
+
+	public StackTraceElement[] getStackTraceElements() {
+		return this.stackTraceElements;
+	}
+
 }

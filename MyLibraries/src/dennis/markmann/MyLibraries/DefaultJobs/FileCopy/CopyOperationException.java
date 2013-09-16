@@ -1,10 +1,5 @@
 package dennis.markmann.MyLibraries.DefaultJobs.FileCopy;
 
-import javax.swing.JOptionPane;
-
-import dennis.markmann.MyLibraries.Exceptions.ExceptionDialogInterface;
-import dennis.markmann.MyLibraries.General.LanguageChooser;
-
 /**
  * Exception thrown if a file can't be copied.
  * 
@@ -13,16 +8,33 @@ import dennis.markmann.MyLibraries.General.LanguageChooser;
  * @version 1.0
  */
 
-class CopyOperationException extends Exception implements ExceptionDialogInterface {
+public class CopyOperationException extends Exception {
 
-    private static final long serialVersionUID = 6498733673905740756L;
+	private final String path;
+	private final String errorTitel = "CopyOperationException";
+	private final String errorMessage = "An error appeared while trying to copy the file '"
+			+ this.path + "'.";
+	private final StackTraceElement[] stackTraceElements;
 
-    CopyOperationException(final String path, final StackTraceElement[] stackTraceElements) {
-        super(LanguageChooser.getMessages("CopyOperationException") + path + "\"");
-    }
+	private static final long serialVersionUID = 6498733673905740756L;
 
-    @Override
-    public final void showDialog() {
-        JOptionPane.showMessageDialog(null, this.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
-    }
+	CopyOperationException(final StackTraceElement[] stackTraceElements,
+			final String path) {
+
+		this.stackTraceElements = stackTraceElements;
+		this.path = path;
+	}
+
+	public String getErrorTitel() {
+		return this.errorTitel;
+	}
+
+	public String getErrorMessage() {
+		return this.errorMessage;
+	}
+
+	public StackTraceElement[] getStackTraceElements() {
+		return this.stackTraceElements;
+	}
+
 }

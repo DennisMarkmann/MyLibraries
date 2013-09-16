@@ -15,13 +15,14 @@ import javax.swing.ImageIcon;
 
 public class IconHelper {
 
-    public final ImageIcon getIcon(final String path) {
-        try {
-            return new ImageIcon(ImageIO.read(this.getClass().getClassLoader().getResourceAsStream(path)));
-        } catch (final IOException e) {
-            new FileNotFoundException(path, e.getStackTrace()).showDialog();
-        }
-        return null;
-    }
+	public final ImageIcon getIcon(final String path)
+			throws FileNotFoundException {
+		try {
+			return new ImageIcon(ImageIO.read(this.getClass().getClassLoader()
+					.getResourceAsStream(path)));
+		} catch (final IOException e) {
+			throw (new FileNotFoundException(e.getStackTrace(), path));
+		}
+	}
 
 }

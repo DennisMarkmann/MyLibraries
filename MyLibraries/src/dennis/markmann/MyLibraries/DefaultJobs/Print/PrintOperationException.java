@@ -1,10 +1,5 @@
 package dennis.markmann.MyLibraries.DefaultJobs.Print;
 
-import javax.swing.JOptionPane;
-
-import dennis.markmann.MyLibraries.Exceptions.ExceptionDialogInterface;
-import dennis.markmann.MyLibraries.General.LanguageChooser;
-
 /**
  * Exception thrown if a the print operation fails.
  * 
@@ -13,16 +8,29 @@ import dennis.markmann.MyLibraries.General.LanguageChooser;
  * @version 1.0
  */
 
-class PrintOperationException extends Exception implements ExceptionDialogInterface {
+public class PrintOperationException extends Exception {
 
-    private static final long serialVersionUID = -4565962119370664301L;
+	private final String errorTitel = "PrintOperationException";
+	private final String errorMessage = "An error appeared while trying to print.";
+	private final StackTraceElement[] stackTraceElements;
 
-    PrintOperationException(final StackTraceElement[] stackTraceElements) {
-        super(LanguageChooser.getMessages("PrintOperationException"));
-    }
+	private static final long serialVersionUID = -4565962119370664301L;
 
-    @Override
-    public final void showDialog() {
-        JOptionPane.showMessageDialog(null, this.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
-    }
+	PrintOperationException(final StackTraceElement[] stackTraceElements) {
+
+		this.stackTraceElements = stackTraceElements;
+	}
+
+	public String getErrorTitel() {
+		return this.errorTitel;
+	}
+
+	public String getErrorMessage() {
+		return this.errorMessage;
+	}
+
+	public StackTraceElement[] getStackTraceElements() {
+		return this.stackTraceElements;
+	}
+
 }

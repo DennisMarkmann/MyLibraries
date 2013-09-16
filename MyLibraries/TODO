@@ -4,3 +4,8 @@
 2.Tabellen automatisch auf Änderungen reagieren lassen (TableModelListener)
 
 3. MigLayout testen für den GUI Builder
+
+Fehler beheben: MyWindowAdapter: 		this.frame.openClosingDialog("CloseWindow");
+Unterstützt nun nur noch englisch.. entsprechend in der MainAnwendung anpassen !
+
+	Same for pathChooser with Directory

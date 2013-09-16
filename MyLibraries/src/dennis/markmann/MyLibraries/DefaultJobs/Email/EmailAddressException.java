@@ -1,10 +1,5 @@
 package dennis.markmann.MyLibraries.DefaultJobs.Email;
 
-import javax.swing.JOptionPane;
-
-import dennis.markmann.MyLibraries.Exceptions.ExceptionDialogInterface;
-import dennis.markmann.MyLibraries.General.LanguageChooser;
-
 /**
  * Exception thrown if a the E-Mail address is not valid.
  * 
@@ -13,17 +8,33 @@ import dennis.markmann.MyLibraries.General.LanguageChooser;
  * @version 1.0
  */
 
-class EmailAddressException extends Exception implements ExceptionDialogInterface {
+public class EmailAddressException extends Exception {
 
-    private static final long serialVersionUID = -4565962119370664301L;
+	private final String emailAddress;
+	private final String errorTitel = "EmailAddressException";
+	private final String errorMessage = "An error appeared while trying to send out the E-Mail. The E-Mail address "
+			+ this.emailAddress + " seems to be invalid.";
+	private final StackTraceElement[] stackTraceElements;
 
-    EmailAddressException(final StackTraceElement[] stackTraceElements, final String emailAddress) {
-        super(LanguageChooser.getMessages("EmailAddressExceptionLineOne") + emailAddress
-                + LanguageChooser.getMessages("EmailAddressExceptionLineTwo"));
-    }
+	private static final long serialVersionUID = -4565962119370664301L;
 
-    @Override
-    public final void showDialog() {
-        JOptionPane.showMessageDialog(null, this.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
-    }
+	EmailAddressException(final StackTraceElement[] stackTraceElements,
+			final String emailAddress) {
+
+		this.stackTraceElements = stackTraceElements;
+		this.emailAddress = emailAddress;
+
+	}
+
+	public String getErrorTitel() {
+		return this.errorTitel;
+	}
+
+	public String getErrorMessage() {
+		return this.errorMessage;
+	}
+
+	public StackTraceElement[] getStackTraceElements() {
+		return this.stackTraceElements;
+	}
 }
