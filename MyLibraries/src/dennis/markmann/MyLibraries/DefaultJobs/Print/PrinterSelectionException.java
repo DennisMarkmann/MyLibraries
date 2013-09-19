@@ -25,7 +25,7 @@ public class PrinterSelectionException extends Exception {
 		return this.errorTitel;
 	}
 
-	public String getErrormessage() {
+	public String getErrorMessage() {
 		return this.errorMessage;
 	}
 

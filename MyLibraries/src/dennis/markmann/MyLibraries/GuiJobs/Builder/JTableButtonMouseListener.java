@@ -16,28 +16,24 @@ import javax.swing.JTable;
 
 class JTableButtonMouseListener extends MouseAdapter {
 
-    private final JTable table;
+	private final JTable table;
 
-    JTableButtonMouseListener(final JTable table) {
-        this.table = table;
-    }
+	JTableButtonMouseListener(final JTable table) {
+		this.table = table;
+	}
 
-    @Override
-    public final void mouseClicked(final MouseEvent e) {
-        final int column = this.table.getColumnModel().getColumnIndexAtX(e.getX());
-        final int row = e.getY() / this.table.getRowHeight();
-        final int index = this.table.columnAtPoint(e.getPoint());
+	@Override
+	public final void mouseClicked(final MouseEvent e) {
+		final int column = this.table.getColumnModel().getColumnIndexAtX(
+				e.getX());
+		final int row = e.getY() / this.table.getRowHeight();
 
-        if (index >= 0) {
-            // TODO
-            // System.out.println(this.table.getColumnName(index));
-        }
-
-        if (row < this.table.getRowCount() && row >= 0 && column < this.table.getColumnCount() && column >= 0) {
-            final Object value = this.table.getValueAt(row, column);
-            if (value instanceof JButton) {
-                ((JButton) value).doClick();
-            }
-        }
-    }
+		if (row < this.table.getRowCount() && row >= 0
+				&& column < this.table.getColumnCount() && column >= 0) {
+			final Object value = this.table.getValueAt(row, column);
+			if (value instanceof JButton) {
+				((JButton) value).doClick();
+			}
+		}
+	}
 }
