@@ -27,188 +27,193 @@ import javax.swing.text.Utilities;
  * @since jdk1.7.0_21
  * @version 1.0
  */
-public class PrintJob implements Printable {
+public class PrintJob implements Printable, Runnable {
 
-	private final PrinterJob printerJob = PrinterJob.getPrinterJob();
-	private Font font = new Font("Arial", Font.PLAIN, 16 * CONS);
-	private final List<String> textPassages = new ArrayList<String>();
-	private String textPassage;
-	private final JTextArea textareaForPrint = new JTextArea();
-	private FontMetrics fontMetrics;
-	private Dimension pageDim;
-	private int currentLines;
-	private int maxLines;
-	private static final int CONS = 2;
-	private int numberOfPages = 0;
+    private final PrinterJob printerJob = PrinterJob.getPrinterJob();
+    private Font font = new Font("Arial", Font.PLAIN, 16 * CONS);
+    private final List<String> textPassages = new ArrayList<String>();
+    private String textPassage;
+    private final JTextArea textareaForPrint = new JTextArea();
+    private FontMetrics fontMetrics;
+    private Dimension pageDim;
+    private int currentLines;
+    private int maxLines;
+    private static final int CONS = 2;
+    private int numberOfPages = 0;
 
-	public final void printText(final String printText)
-			throws PrinterSelectionException, PrintOperationException {
-		this.setPrintSettings(printText);
-		for (int i = 0; i < this.numberOfPages; i++) {
-			this.printPage(i);
-		}
-	}
+    private String printText = "";
 
-	public final void changeFont(final String name, final int style,
-			final int size) {
-		this.font = new Font(name, style, size);
-	}
+    public PrintJob(final String printText) {
+        this.printText = printText;
+    }
 
-	private void setPrintSettings(final String printText)
-			throws PrinterSelectionException, PrintOperationException {
+    @Override
+    public void run() {
+        // TODO catch exceptions
+        try {
+            this.printText(this.printText);
+        } catch (final PrinterSelectionException e) {
+            e.printStackTrace();
+        } catch (final PrintOperationException e) {
+            e.printStackTrace();
+        }
+    }
 
-		final PageFormat pageFormat = new PageFormat();
+    public final void printText(final String printText) throws PrinterSelectionException, PrintOperationException {
+        if (printText != null) {
+            this.setPrintSettings(printText);
+            for (int i = 0; i < this.numberOfPages; i++) {
+                this.printPage(i);
+            }
+        }
+    }
 
-		this.pageDim = new Dimension(
-				((int) pageFormat.getImageableWidth() - 10) * CONS,
-				((int) pageFormat.getImageableHeight()) * CONS);
+    public final void changeFont(final String name, final int style, final int size) {
+        this.font = new Font(name, style, size);
+    }
 
-		this.getPrintService();
-		this.setTextAreaValues(printText);
-		this.wrapText(pageFormat);
-		this.getNumberOfPages();
-		this.calculateStartEndofPages();
-		this.printerJob.setPrintable(this, pageFormat);
-	}
+    private void setPrintSettings(final String printText) throws PrinterSelectionException, PrintOperationException {
 
-	// get defaultPrinter or opens printerSelectionDialog
-	private void getPrintService() throws PrinterSelectionException {
-		final PrinterSelector instance = PrinterSelector.getInstance();
-		try {
-			if (instance.getService() != null) {
-				this.printerJob.setPrintService(instance.getService());
-			} else {
-				this.printerJob.setPrintService(instance.selectPrinter());
-			}
-		} catch (final PrinterException e) {
-			instance.setPrinter(PrintServiceLookup.lookupDefaultPrintService());
-			this.getPrintService();
-			throw (new PrinterSelectionException(e.getStackTrace()));
-		}
-	}
+        final PageFormat pageFormat = new PageFormat();
 
-	// Calculate specifications of TextArea
-	private void setTextAreaValues(final String printText) {
+        this.pageDim = new Dimension(
+                ((int) pageFormat.getImageableWidth() - 10) * CONS,
+                ((int) pageFormat.getImageableHeight()) * CONS);
 
-		this.textareaForPrint.setFont(this.font);
-		this.fontMetrics = this.textareaForPrint.getFontMetrics(this.font);
-		this.textareaForPrint.setLineWrap(true);
-		this.textareaForPrint.setWrapStyleWord(true);
-		this.textareaForPrint.setPreferredSize(this.pageDim);
-		this.textareaForPrint.setTabSize(4);
-		this.textareaForPrint.setText(printText);
-	}
+        this.getPrintService();
+        this.setTextAreaValues(printText);
+        this.wrapText(pageFormat);
+        this.getNumberOfPages();
+        this.calculateStartEndofPages();
+        this.printerJob.setPrintable(this, pageFormat);
+    }
 
-	// Wrapp text and give to TextArea
-	private void wrapText(final PageFormat pageFormat)
-			throws PrintOperationException {
+    // get defaultPrinter or opens printerSelectionDialog
+    private void getPrintService() throws PrinterSelectionException {
+        final PrinterSelector instance = PrinterSelector.getInstance();
+        try {
+            if (instance.getService() != null) {
+                this.printerJob.setPrintService(instance.getService());
+            } else {
+                this.printerJob.setPrintService(instance.selectPrinter());
+            }
+        } catch (final PrinterException e) {
+            instance.setPrinter(PrintServiceLookup.lookupDefaultPrintService());
+            this.getPrintService();
+            throw (new PrinterSelectionException(e.getStackTrace()));
+        }
+    }
 
-		final JWindow windowForPrint = new JWindow();
-		windowForPrint.add(this.textareaForPrint);
-		windowForPrint.pack();
-		this.textareaForPrint.setText(this
-				.getWrappedText(this.textareaForPrint));
-		this.pageDim = new Dimension((int) pageFormat.getImageableWidth()
-				* CONS, (int) pageFormat.getImageableHeight() * CONS);
-		this.textareaForPrint.setPreferredSize(this.pageDim);
-		windowForPrint.pack();
-	}
+    // Calculate specifications of TextArea
+    private void setTextAreaValues(final String printText) {
 
-	private void getNumberOfPages() {
-		this.currentLines = this.textareaForPrint.getLineCount();
-		this.maxLines = this.textareaForPrint.getHeight()
-				/ this.fontMetrics.getHeight();
-		this.numberOfPages = (int) Math.ceil(this.currentLines
-				/ (double) this.maxLines);
-	}
+        this.textareaForPrint.setFont(this.font);
+        this.fontMetrics = this.textareaForPrint.getFontMetrics(this.font);
+        this.textareaForPrint.setLineWrap(true);
+        this.textareaForPrint.setWrapStyleWord(true);
+        this.textareaForPrint.setPreferredSize(this.pageDim);
+        this.textareaForPrint.setTabSize(4);
+        this.textareaForPrint.setText(printText);
+    }
 
-	// Calculate Start and End of the pages and store in pageBorders
-	// And split text in passages and store in textPassages
-	private void calculateStartEndofPages() throws PrintOperationException {
+    // Wrapp text and give to TextArea
+    private void wrapText(final PageFormat pageFormat) throws PrintOperationException {
 
-		final int[][] pageBorders = new int[999][2];
+        final JWindow windowForPrint = new JWindow();
+        windowForPrint.add(this.textareaForPrint);
+        windowForPrint.pack();
+        this.textareaForPrint.setText(this.getWrappedText(this.textareaForPrint));
+        this.pageDim = new Dimension((int) pageFormat.getImageableWidth() * CONS, (int) pageFormat.getImageableHeight() * CONS);
+        this.textareaForPrint.setPreferredSize(this.pageDim);
+        windowForPrint.pack();
+    }
 
-		try {
-			for (int i = 0; i < this.numberOfPages; i++) {
-				pageBorders[i][0] = this.textareaForPrint.getLineStartOffset(i
-						* this.maxLines);
-			}
-			for (int i = 0; i < this.numberOfPages - 1; i++) {
-				pageBorders[i][1] = pageBorders[i + 1][0] - 1;
-			}
-			pageBorders[this.numberOfPages - 1][1] = this.textareaForPrint
-					.getLineEndOffset(this.currentLines - 1);
-			for (int i = 0; i < this.numberOfPages; i++) {
-				this.textPassages.add(this.textareaForPrint.getText(
-						pageBorders[i][0], pageBorders[i][1]
-								- pageBorders[i][0]));
-			}
-		} catch (final BadLocationException e) {
-			throw (new PrintOperationException(e.getStackTrace()));
-		}
-	}
+    private void getNumberOfPages() {
+        this.currentLines = this.textareaForPrint.getLineCount();
+        this.maxLines = this.textareaForPrint.getHeight() / this.fontMetrics.getHeight();
+        this.numberOfPages = (int) Math.ceil(this.currentLines / (double) this.maxLines);
+    }
 
-	private boolean printPage(final int page) throws PrintOperationException {
-		if (page < 0 | page > this.numberOfPages - 1) {
-			return false;
-		}
-		this.textPassage = this.textPassages.get(page);
-		try {
-			this.printerJob.print();
-		} catch (final PrinterException e) {
-			throw (new PrintOperationException(e.getStackTrace()));
-		}
-		return true;
-	}
+    // Calculate Start and End of the pages and store in pageBorders
+    // And split text in passages and store in textPassages
+    private void calculateStartEndofPages() throws PrintOperationException {
 
-	@Override
-	public final int print(final Graphics g, final PageFormat pFormat,
-			final int pageIndex) throws PrinterException {
-		if (pageIndex > 0) {
-			return Printable.NO_SUCH_PAGE;
-		}
+        final int[][] pageBorders = new int[999][2];
 
-		final Graphics2D g2 = (Graphics2D) g;
+        try {
+            for (int i = 0; i < this.numberOfPages; i++) {
+                pageBorders[i][0] = this.textareaForPrint.getLineStartOffset(i * this.maxLines);
+            }
+            for (int i = 0; i < this.numberOfPages - 1; i++) {
+                pageBorders[i][1] = pageBorders[i + 1][0] - 1;
+            }
+            pageBorders[this.numberOfPages - 1][1] = this.textareaForPrint.getLineEndOffset(this.currentLines - 1);
+            for (int i = 0; i < this.numberOfPages; i++) {
+                this.textPassages.add(this.textareaForPrint.getText(pageBorders[i][0], pageBorders[i][1] - pageBorders[i][0]));
+            }
+        } catch (final BadLocationException e) {
+            throw (new PrintOperationException(e.getStackTrace()));
+        }
+    }
 
-		g2.translate((int) pFormat.getImageableX(),
-				(int) pFormat.getImageableY());
-		g2.scale(1.0 / CONS, 1.0 / CONS);
+    private boolean printPage(final int page) throws PrintOperationException {
+        if (page < 0 | page > this.numberOfPages - 1) {
+            return false;
+        }
+        this.textPassage = this.textPassages.get(page);
+        try {
+            this.printerJob.print();
+        } catch (final PrinterException e) {
+            throw (new PrintOperationException(e.getStackTrace()));
+        }
+        return true;
+    }
 
-		this.textareaForPrint.setText(this.textPassage);
-		BufferedImage bufferedImage = null;
-		bufferedImage = new BufferedImage(this.pageDim.width,
-				this.pageDim.height, BufferedImage.TYPE_BYTE_GRAY);
-		this.textareaForPrint.paint(bufferedImage.getGraphics());
+    @Override
+    public final int print(final Graphics g, final PageFormat pFormat, final int pageIndex) throws PrinterException {
+        if (pageIndex > 0) {
+            return Printable.NO_SUCH_PAGE;
+        }
 
-		g2.drawImage(bufferedImage, 0, 0, this.textareaForPrint);
-		g2.dispose();
+        final Graphics2D g2 = (Graphics2D) g;
 
-		return Printable.PAGE_EXISTS;
-	}
+        g2.translate((int) pFormat.getImageableX(), (int) pFormat.getImageableY());
+        g2.scale(1.0 / CONS, 1.0 / CONS);
 
-	private String getWrappedText(final JTextComponent c)
-			throws PrintOperationException {
-		final int length = c.getDocument().getLength();
-		int offset = 0;
-		final StringBuffer sb = new StringBuffer((int) (length * 1.30));
-		String s = "";
-		try {
-			while (offset < length) {
-				int end = Utilities.getRowEnd(c, offset);
-				if (end < 0) {
-					break;
-				}
-				end = Math.min(end + 1, length);
-				s = c.getDocument().getText(offset, end - offset);
-				sb.append(s);
-				if (!s.endsWith("\n")) {
-					sb.append('\n');
-				}
-				offset = end;
-			}
-		} catch (final BadLocationException e) {
-			throw (new PrintOperationException(e.getStackTrace()));
-		}
-		return sb.toString();
-	}
+        this.textareaForPrint.setText(this.textPassage);
+        BufferedImage bufferedImage = null;
+        bufferedImage = new BufferedImage(this.pageDim.width, this.pageDim.height, BufferedImage.TYPE_BYTE_GRAY);
+        this.textareaForPrint.paint(bufferedImage.getGraphics());
+
+        g2.drawImage(bufferedImage, 0, 0, this.textareaForPrint);
+        g2.dispose();
+
+        return Printable.PAGE_EXISTS;
+    }
+
+    private String getWrappedText(final JTextComponent c) throws PrintOperationException {
+        final int length = c.getDocument().getLength();
+        int offset = 0;
+        final StringBuffer sb = new StringBuffer((int) (length * 1.30));
+        String s = "";
+        try {
+            while (offset < length) {
+                int end = Utilities.getRowEnd(c, offset);
+                if (end < 0) {
+                    break;
+                }
+                end = Math.min(end + 1, length);
+                s = c.getDocument().getText(offset, end - offset);
+                sb.append(s);
+                if (!s.endsWith("\n")) {
+                    sb.append('\n');
+                }
+                offset = end;
+            }
+        } catch (final BadLocationException e) {
+            throw (new PrintOperationException(e.getStackTrace()));
+        }
+        return sb.toString();
+    }
+
 }

@@ -9,3 +9,7 @@ Fehler beheben: MyWindowAdapter: 		this.frame.openClosingDialog("CloseWindow");
 Unterstützt nun nur noch englisch.. entsprechend in der MainAnwendung anpassen !
 
 	Same for pathChooser with Directory
+	
+4. Print und E-Mail thread basierte Exceptions abfangen
+
+5. Print abort Exception behandeln
