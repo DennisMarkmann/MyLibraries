@@ -1,5 +1,7 @@
 package dennis.markmann.MyLibraries.DefaultJobs.Email;
 
+import java.util.Properties;
+
 /**
  * E-Mail object containing the mail content and the list of addresses the mail has to be send to.
  * 
@@ -14,6 +16,8 @@ public class EmailSettings {
     private String password;
     private String senderAddress;
     private String subject;
+    private Properties properties;
+    private boolean authentificate;
     private String smtpHost;
 
     public EmailSettings(
@@ -21,14 +25,15 @@ public class EmailSettings {
             final String password,
             final String senderAddress,
             final String subject,
-            final String smtpHost) {
+            String smtpHost,
+            String smtpPort,
+            boolean authentificate) {
 
         this.username = username;
         this.password = password;
         this.senderAddress = senderAddress;
         this.subject = subject;
-        this.smtpHost = smtpHost;
-
+        this.specifyProperties(smtpHost, smtpPort, authentificate);
     }
 
     public final String getUsername() {
@@ -63,12 +68,34 @@ public class EmailSettings {
         this.subject = subject;
     }
 
-    public final String getSmtpHost() {
-        return this.smtpHost;
+    public Properties getProperties() {
+        return properties;
     }
 
-    public final void setSmtpHost(final String smtpHost) {
+    public void setProperties(Properties properties) {
+        this.properties = properties;
+    }
+
+    public boolean isAuthentificate() {
+        return authentificate;
+    }
+    
+    public String getSmtpHost() {
+        return smtpHost;
+    }
+
+    public void specifyProperties(String smtpHost, String smtpPort, boolean authentificate) {
+        properties = new Properties();
+        this.authentificate = authentificate;
         this.smtpHost = smtpHost;
+
+        properties.put("mail.smtp.host", smtpHost);
+        if (smtpPort != null && !smtpPort.equals("")) {
+            properties.setProperty("mail.smtp.port", smtpPort);
+        } else {
+            properties.setProperty("mail.smtp.port", "587");
+        }
+        properties.put("mail.smtp.auth", authentificate);
     }
 
 }

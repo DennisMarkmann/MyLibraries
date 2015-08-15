@@ -18,35 +18,32 @@ import javax.mail.internet.MimeMultipart;
 
 public class EmailContentCreator {
 
-	public final void createMailContent(final String text,
-			final File attachement, final EmailObject emailObject) {
+    public final void createMailContent(final String text, final File attachement, final EmailObject emailObject) {
 
-		try {
-			final MimeBodyPart textPart = new MimeBodyPart();
-			textPart.setText(text);
-			textPart.setDisposition(MimeBodyPart.INLINE);
-			final MimeBodyPart attachementPart = new MimeBodyPart();
+        // Create the email text
+        final MimeBodyPart textPart = new MimeBodyPart();
+        try {
+            textPart.setText(text);
+            textPart.setDisposition(MimeBodyPart.INLINE);
 
-			if (attachement != null) {
-				attachementPart.setDataHandler(new DataHandler(
-						new FileDataSource(attachement)));
-				attachementPart.setFileName(attachement.getName());
-				attachementPart.setDisposition(MimeBodyPart.ATTACHMENT);
-			}
+            // Create the attachement for the email
+            final MimeBodyPart attachementPart = new MimeBodyPart();
+            if (attachement != null) {
+                attachementPart.setDataHandler(new DataHandler(new FileDataSource(attachement)));
+                attachementPart.setFileName(attachement.getName());
+                attachementPart.setDisposition(MimeBodyPart.ATTACHMENT);
+            }
 
-			final MimeMultipart mailContent = new MimeMultipart();
+            final MimeMultipart mailContent = new MimeMultipart();
+            mailContent.addBodyPart(textPart);
 
-			mailContent.addBodyPart(textPart);
-
-			if (attachement != null) {
-				mailContent.addBodyPart(attachementPart);
-			}
-
-			emailObject.setMailContent(mailContent);
-
-		} catch (final MessagingException e) {
-			e.printStackTrace();
-		}
-
-	}
+            if (attachement != null) {
+                mailContent.addBodyPart(attachementPart);
+            }
+            emailObject.setMailContent(mailContent);
+        } catch (MessagingException e) {
+//            throw (new EmailAddressException(e.getStackTrace(), emailAddress));
+            e.printStackTrace();
+        }
+    }
 }

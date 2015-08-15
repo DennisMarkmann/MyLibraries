@@ -33,7 +33,7 @@ public class EmailJob implements Runnable {
 
     @Override
     public void run() {
-        // TODO catch exceptions
+        // TODO throw exceptions
         try {
             this.sendMail(this.emailSettings, this.emailList);
         } catch (final EmailSendingException e) {
@@ -45,19 +45,21 @@ public class EmailJob implements Runnable {
 
     public final void sendMail(final EmailSettings emailSettings, final ArrayList<EmailObject> emailList)
             throws EmailSendingException, EmailAddressException {
-
-        final Properties properties = new Properties();
-        properties.put("mail.smtp.host", emailSettings.getSmtpHost());
-        properties.setProperty("mail.smtp.port", "587");
-        properties.put("mail.smtp.auth", "true");
-
-        final MailAuthenticator auth = new MailAuthenticator(emailSettings.getUsername(), emailSettings.getPassword());
+        validateSettings();
+        Properties properties = emailSettings.getProperties();
+        MailAuthenticator auth = null;
+        if (emailSettings.isAuthentificate()) {
+            auth = new MailAuthenticator(emailSettings.getUsername(), emailSettings.getPassword());
+        }
         final Session session = Session.getDefaultInstance(properties, auth);
 
         try {
             final Message msg = new MimeMessage(session);
             msg.setFrom(new InternetAddress(emailSettings.getSenderAddress()));
-            final String subject = emailSettings.getSubject();
+            String subject = emailSettings.getSubject();
+            if (subject == null) {
+                subject = "";
+            }
             msg.setSubject(subject);
             msg.setHeader(subject, subject);
             msg.setSentDate(new Date());
@@ -78,6 +80,15 @@ public class EmailJob implements Runnable {
             }
         } catch (final Exception e) {
             throw (new EmailSendingException(e.getStackTrace()));
+        }
+    }
+
+    private void validateSettings() {
+        if (emailSettings.isAuthentificate() && (emailSettings.getUsername() == null || emailSettings.getPassword() == null)) {
+            // TODO exception
+        }
+        if (emailSettings.getSenderAddress() == null || emailSettings.getSmtpHost() == null) {
+            // TODO exception
         }
     }
 
