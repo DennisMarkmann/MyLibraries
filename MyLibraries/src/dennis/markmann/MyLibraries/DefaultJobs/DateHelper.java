@@ -74,7 +74,5 @@ public class DateHelper {
             e.printStackTrace();
         }
         return null;
-
     }
-
 }

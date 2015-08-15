@@ -15,25 +15,25 @@ import javax.swing.filechooser.FileFilter;
 
 public class PathChooser {
 
-	public final String changePath() {
-		final JFileChooser fc = new JFileChooser();
-		fc.setFileSelectionMode(JFileChooser.DIRECTORIES_ONLY);
-		fc.setFileFilter(new FileFilter() {
+    public final String changePath() {
+        final JFileChooser fc = new JFileChooser();
+        fc.setFileSelectionMode(JFileChooser.DIRECTORIES_ONLY);
+        fc.setFileFilter(new FileFilter() {
 
-			@Override
-			public boolean accept(final File file) {
-				return file.isDirectory();
-			}
+            @Override
+            public boolean accept(final File file) {
+                return file.isDirectory();
+            }
 
-			@Override
-			public String getDescription() {
-				return ("Directory");
-			}
-		});
+            @Override
+            public String getDescription() {
+                return ("Directory");
+            }
+        });
 
-		if (fc.showOpenDialog(null) == JFileChooser.APPROVE_OPTION) {
-			return fc.getSelectedFile().getAbsolutePath() + "\\";
-		}
-		return null;
-	}
+        if (fc.showOpenDialog(null) == JFileChooser.APPROVE_OPTION) {
+            return fc.getSelectedFile().getAbsolutePath() + "\\";
+        }
+        return null;
+    }
 }

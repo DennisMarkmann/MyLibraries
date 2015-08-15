@@ -10,31 +10,29 @@ package dennis.markmann.MyLibraries.DefaultJobs.FileCopy;
 
 public class CopyOperationException extends Exception {
 
-	private final String path;
-	private final String errorTitel = "CopyOperationException";
-	private final String errorMessage = "An error appeared while trying to copy the file '"
-			+ this.path + "'.";
-	private final StackTraceElement[] stackTraceElements;
+    private final String path;
+    private final String errorTitel = "CopyOperationException";
+    private final String errorMessage = "An error appeared while trying to copy the file '" + this.path + "'.";
+    private final StackTraceElement[] stackTraceElements;
 
-	private static final long serialVersionUID = 6498733673905740756L;
+    private static final long serialVersionUID = 6498733673905740756L;
 
-	CopyOperationException(final StackTraceElement[] stackTraceElements,
-			final String path) {
+    CopyOperationException(final StackTraceElement[] stackTraceElements, final String path) {
 
-		this.stackTraceElements = stackTraceElements;
-		this.path = path;
-	}
+        this.stackTraceElements = stackTraceElements;
+        this.path = path;
+    }
 
-	public String getErrorTitel() {
-		return this.errorTitel;
-	}
+    public String getErrorTitel() {
+        return this.errorTitel;
+    }
 
-	public String getErrorMessage() {
-		return this.errorMessage;
-	}
+    public String getErrorMessage() {
+        return this.errorMessage;
+    }
 
-	public StackTraceElement[] getStackTraceElements() {
-		return this.stackTraceElements;
-	}
+    public StackTraceElement[] getStackTraceElements() {
+        return this.stackTraceElements;
+    }
 
 }

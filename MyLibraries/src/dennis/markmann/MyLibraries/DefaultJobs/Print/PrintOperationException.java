@@ -10,27 +10,27 @@ package dennis.markmann.MyLibraries.DefaultJobs.Print;
 
 public class PrintOperationException extends Exception {
 
-	private final String errorTitel = "PrintOperationException";
-	private final String errorMessage = "An error appeared while trying to print.";
-	private final StackTraceElement[] stackTraceElements;
+    private final String errorTitel = "PrintOperationException";
+    private final String errorMessage = "An error appeared while trying to print.";
+    private final StackTraceElement[] stackTraceElements;
 
-	private static final long serialVersionUID = -4565962119370664301L;
+    private static final long serialVersionUID = -4565962119370664301L;
 
-	PrintOperationException(final StackTraceElement[] stackTraceElements) {
+    PrintOperationException(final StackTraceElement[] stackTraceElements) {
 
-		this.stackTraceElements = stackTraceElements;
-	}
+        this.stackTraceElements = stackTraceElements;
+    }
 
-	public String getErrorTitel() {
-		return this.errorTitel;
-	}
+    public String getErrorTitel() {
+        return this.errorTitel;
+    }
 
-	public String getErrorMessage() {
-		return this.errorMessage;
-	}
+    public String getErrorMessage() {
+        return this.errorMessage;
+    }
 
-	public StackTraceElement[] getStackTraceElements() {
-		return this.stackTraceElements;
-	}
+    public StackTraceElement[] getStackTraceElements() {
+        return this.stackTraceElements;
+    }
 
 }

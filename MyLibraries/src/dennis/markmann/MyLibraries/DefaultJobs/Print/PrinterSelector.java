@@ -28,9 +28,14 @@ public final class PrinterSelector {
         final PrintService[] printService = PrintServiceLookup.lookupPrintServices(flavor, pras);
         final PrintService defaultService = PrintServiceLookup.lookupDefaultPrintService();
 
-        return this.service = ServiceUI.printDialog(GraphicsEnvironment.getLocalGraphicsEnvironment()
-                .getDefaultScreenDevice()
-                .getDefaultConfiguration(), 200, 200, printService, defaultService, flavor, pras);
+        return this.service = ServiceUI.printDialog(
+                GraphicsEnvironment.getLocalGraphicsEnvironment().getDefaultScreenDevice().getDefaultConfiguration(),
+                200,
+                200,
+                printService,
+                defaultService,
+                flavor,
+                pras);
 
     }
 

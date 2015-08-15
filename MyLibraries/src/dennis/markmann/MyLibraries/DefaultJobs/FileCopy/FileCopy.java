@@ -17,72 +17,65 @@ import java.nio.channels.FileChannel;
 
 public class FileCopy {
 
-	private final long chunckSizeInBytes = 1024 * 1024;
+    private final long chunckSizeInBytes = 1024 * 1024;
 
-	public final void copyFolder(final String sourceFolder,
-			final String destinationFolder) throws CopyOperationException {
+    public final void copyFolder(final String sourceFolder, final String destinationFolder) throws CopyOperationException {
 
-		for (final File file : new File(sourceFolder).listFiles()) {
-			if (!file.isDirectory()) {
-				this.copy(file.getPath(), this.changeSourceToDestinationPath(
-						file.getPath(), sourceFolder, destinationFolder));
-			} else {
-				final String destination = this.changeSourceToDestinationPath(
-						file.getPath(), sourceFolder, destinationFolder);
-				new File(destination).mkdirs();
-				this.copyFolder(file.getAbsolutePath(), destination);
-			}
-		}
-	}
+        for (final File file : new File(sourceFolder).listFiles()) {
+            if (!file.isDirectory()) {
+                this.copy(file.getPath(), this.changeSourceToDestinationPath(file.getPath(), sourceFolder, destinationFolder));
+            } else {
+                final String destination = this.changeSourceToDestinationPath(file.getPath(), sourceFolder, destinationFolder);
+                new File(destination).mkdirs();
+                this.copyFolder(file.getAbsolutePath(), destination);
+            }
+        }
+    }
 
-	public final void copy(final String source, final String destination)
-			throws CopyOperationException {
-		try {
+    public final void copy(final String source, final String destination) throws CopyOperationException {
+        try {
 
-			final File sourceFile = new File(source);
-			final File copiedFile = new File(destination);
+            final File sourceFile = new File(source);
+            final File copiedFile = new File(destination);
 
-			final FileInputStream fileInputStream = new FileInputStream(
-					sourceFile);
-			final FileOutputStream fileOutputStream = new FileOutputStream(
-					copiedFile);
+            final FileInputStream fileInputStream = new FileInputStream(sourceFile);
+            final FileOutputStream fileOutputStream = new FileOutputStream(copiedFile);
 
-			final FileChannel inputChannel = fileInputStream.getChannel();
-			final FileChannel outputChannel = fileOutputStream.getChannel();
+            final FileChannel inputChannel = fileInputStream.getChannel();
+            final FileChannel outputChannel = fileOutputStream.getChannel();
 
-			this.transfer(inputChannel, outputChannel, sourceFile.length());
+            this.transfer(inputChannel, outputChannel, sourceFile.length());
 
-			fileInputStream.close();
-			fileOutputStream.close();
+            fileInputStream.close();
+            fileOutputStream.close();
 
-		} catch (final Exception e) {
-			throw (new CopyOperationException(e.getStackTrace(), source));
-		}
-	}
+        } catch (final Exception e) {
+            throw (new CopyOperationException(e.getStackTrace(), source));
+        }
+    }
 
-	private void transfer(final FileChannel inputChannel,
-			final ByteChannel outputChannel, final long lengthInBytes)
-			throws IOException {
+    private void transfer(final FileChannel inputChannel, final ByteChannel outputChannel, final long lengthInBytes)
+            throws IOException {
 
-		long overallBytesTransfered = 0L;
+        long overallBytesTransfered = 0L;
 
-		while (overallBytesTransfered < lengthInBytes) {
-			long bytesTransfered = 0L;
+        while (overallBytesTransfered < lengthInBytes) {
+            long bytesTransfered = 0L;
 
-			bytesTransfered = inputChannel.transferTo(
-					overallBytesTransfered,
-					Math.min(this.chunckSizeInBytes, lengthInBytes
-							- overallBytesTransfered), outputChannel);
+            bytesTransfered = inputChannel.transferTo(
+                    overallBytesTransfered,
+                    Math.min(this.chunckSizeInBytes, lengthInBytes - overallBytesTransfered),
+                    outputChannel);
 
-			overallBytesTransfered += bytesTransfered;
-		}
-	}
+            overallBytesTransfered += bytesTransfered;
+        }
+    }
 
-	private String changeSourceToDestinationPath(final String filePath,
-			final String sourceFolder, final String destinationFolder) {
-		return destinationFolder
-				+ filePath.substring(filePath.indexOf(sourceFolder)
-						+ sourceFolder.length());
-	}
+    private String changeSourceToDestinationPath(
+            final String filePath,
+            final String sourceFolder,
+            final String destinationFolder) {
+        return destinationFolder + filePath.substring(filePath.indexOf(sourceFolder) + sourceFolder.length());
+    }
 
 }
