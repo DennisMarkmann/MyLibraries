@@ -19,38 +19,44 @@ public class FileCopy {
 
     private final long chunckSizeInBytes = 1024 * 1024;
 
-    public final void copyFolder(final String sourceFolder, final String destinationFolder) throws CopyOperationException {
+    public final void copyFolder(final String sourceFolder, final String destinationFolder, boolean includeSubfolder)
+            throws CopyOperationException {
 
         for (final File file : new File(sourceFolder).listFiles()) {
             if (!file.isDirectory()) {
                 this.copy(file.getPath(), this.changeSourceToDestinationPath(file.getPath(), sourceFolder, destinationFolder));
-            } else {
+            } else if (!file.isDirectory() && includeSubfolder) {
                 final String destination = this.changeSourceToDestinationPath(file.getPath(), sourceFolder, destinationFolder);
                 new File(destination).mkdirs();
-                this.copyFolder(file.getAbsolutePath(), destination);
+                this.copyFolder(file.getAbsolutePath(), destination, includeSubfolder);
             }
         }
     }
 
     public final void copy(final String source, final String destination) throws CopyOperationException {
+
+        FileInputStream fileInputStream = null;
+        FileOutputStream fileOutputStream = null;
         try {
 
             final File sourceFile = new File(source);
-            final File copiedFile = new File(destination);
-
-            final FileInputStream fileInputStream = new FileInputStream(sourceFile);
-            final FileOutputStream fileOutputStream = new FileOutputStream(copiedFile);
-
+            fileInputStream = new FileInputStream(sourceFile);
             final FileChannel inputChannel = fileInputStream.getChannel();
+
+            final File copiedFile = new File(destination);
+            fileOutputStream = new FileOutputStream(copiedFile);
             final FileChannel outputChannel = fileOutputStream.getChannel();
 
             this.transfer(inputChannel, outputChannel, sourceFile.length());
 
-            fileInputStream.close();
-            fileOutputStream.close();
-
         } catch (final Exception e) {
             throw (new CopyOperationException(e.getStackTrace(), source));
+        } finally {
+            try {
+                fileInputStream.close();
+                fileOutputStream.close();
+            } catch (IOException e) {
+            }
         }
     }
 
