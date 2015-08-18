@@ -1,13 +1,13 @@
 
 1.PrintJob weiter optimieren
 
-2.Tabellen automatisch auf Änderungen reagieren lassen (TableModelListener)
+2.Tabellen automatisch auf Aenderungen reagieren lassen (TableModelListener)
 
-3. MigLayout testen für den GUI Builder
+3.MigLayout testen fuer den GUI Builder
 
-Fehler beheben: MyWindowAdapter: 		this.frame.openClosingDialog("CloseWindow");
-Unterstützt nun nur noch englisch.. entsprechend in der MainAnwendung anpassen !
-
+Fehler beheben:
+ 	MyWindowAdapter: this.frame.openClosingDialog("CloseWindow");
+	Unterstuetzt nun nur noch englisch.. entsprechend in der MainAnwendung anpassen !
 	Same for pathChooser with Directory
 	
 4. Print und E-Mail thread basierte Exceptions abfangen
