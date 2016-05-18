@@ -1,15 +1,18 @@
+1.PrintJob code / performance improvements
 
-1.PrintJob weiter optimieren
+2.Auto refresh tables after changes (TableModelListener)
 
-2.Tabellen automatisch auf Aenderungen reagieren lassen (TableModelListener)
+3.MigLayout test for GUIBuilder
 
-3.MigLayout testen fuer den GUI Builder
-
-Fehler beheben:
+Errors to fix:
  	MyWindowAdapter: this.frame.openClosingDialog("CloseWindow");
-	Unterstuetzt nun nur noch englisch.. entsprechend in der MainAnwendung anpassen !
+	Sadly only English supported right now.. to fix in the main application !
 	Same for pathChooser with Directory
 	
-4. Print und E-Mail thread basierte Exceptions abfangen
+4. Catch print and eMail thread based exceptions
 
-5. Print abort Exception behandeln
+5. Take care of print abort Exception
+
+6. Develop JavaFX GUIBuilder
+
+7. Implement new Java 8 compatible DateHelper (DateHelperNew) (toRename after implementation)
