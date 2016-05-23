@@ -17,7 +17,6 @@ import javax.swing.table.TableCellRenderer;
  * Used to create GUI elements.
  * 
  * @author dennis.markmann
- * @since JDK.1.7.0_21
  * @version 1.0
  */
 

@@ -39,7 +39,6 @@ public class CheckBoxHelper {
      * Used to enable single select functionality for checkBoxes.
      * 
      * @author dennis.markmann
-     * @since JDK.1.7.0_21
      * @version 1.0
      */
 

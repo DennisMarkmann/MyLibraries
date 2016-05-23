@@ -4,7 +4,6 @@ package dennis.markmann.MyLibraries.DefaultJobs.Print;
  * Exception thrown if a the print operation fails.
  * 
  * @author dennis.markmann
- * @since JDK.1.7.0_21
  * @version 1.0
  */
 

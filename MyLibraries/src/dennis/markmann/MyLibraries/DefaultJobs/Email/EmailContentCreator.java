@@ -12,7 +12,6 @@ import javax.mail.internet.MimeMultipart;
  * Used to create the content of an E-Mail.
  * 
  * @author dennis.markmann
- * @since JDK.1.7.0_21
  * @version 1.0
  */
 

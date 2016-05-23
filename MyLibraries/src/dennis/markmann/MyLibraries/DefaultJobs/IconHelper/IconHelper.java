@@ -9,7 +9,6 @@ import javax.swing.ImageIcon;
  * Used to enable the getIcon method for other classes.
  * 
  * @author dennis.markmann
- * @since JDK.1.7.0_21
  * @version 1.0
  */
 

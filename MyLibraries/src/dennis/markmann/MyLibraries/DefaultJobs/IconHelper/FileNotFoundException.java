@@ -4,7 +4,6 @@ package dennis.markmann.MyLibraries.DefaultJobs.IconHelper;
  * Exception thrown if a file can't be found.
  * 
  * @author dennis.markmann
- * @since JDK.1.7.0_21
  * @version 1.0
  */
 

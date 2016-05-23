@@ -6,7 +6,6 @@ import java.util.Properties;
  * E-Mail object containing the mail content and the list of addresses the mail has to be send to.
  * 
  * @author dennis.markmann
- * @since JDK.1.7.0_21
  * @version 1.0
  */
 

@@ -9,7 +9,6 @@ import java.util.Date;
  * Used to get the current Date or to parse Strings to Date objects.
  * 
  * @author dennis.markmann
- * @since JDK.1.7.0_21
  * @version 1.0
  */
 

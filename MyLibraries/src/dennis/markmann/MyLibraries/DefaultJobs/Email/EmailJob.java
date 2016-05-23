@@ -17,7 +17,6 @@ import javax.mail.internet.MimeMessage;
  * Used to send out E-Mails.
  * 
  * @author dennis.markmann
- * @since JDK.1.7.0_21
  * @version 1.0
  */
 
@@ -93,10 +92,9 @@ public class EmailJob implements Runnable {
     }
 
     /**
-     * Used to authentificate with protected E-Mail provider.
+     * Used to authenticate with protected E-Mail provider.
      * 
      * @author dennis.markmann
-     * @since JDK.1.7.0_21
      * @version 1.0
      */
 

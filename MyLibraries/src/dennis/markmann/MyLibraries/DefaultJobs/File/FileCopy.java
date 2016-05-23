@@ -11,7 +11,6 @@ import java.nio.channels.FileChannel;
  * Used to create a copy of a given source at a selected destination.
  * 
  * @author dennis.markmann
- * @since JDK.1.7.0_21
  * @version 1.0
  */
 
