@@ -19,9 +19,8 @@ import javax.swing.JTextField;
 
 /**
  * Builder for many GUI components on GridLayout.
- * 
+ *
  * @author dennis.markmann
- * @since jdk1.7.0_21
  * @version 1.0
  */
 
@@ -34,28 +33,6 @@ public class GuiBuilder {
         this.getGridBagConstraints().insets = new Insets(5, 5, 5, 5);
         this.getGridBagConstraints().weightx = 2;
         this.getGridBagConstraints().fill = GridBagConstraints.BOTH;
-    }
-
-    public final void setDefaultFrameSettings(final JFrame frame, final String title) {
-        // frame.addWindowListener(new MyWindowAdapter(frame));
-        frame.setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
-        frame.setTitle(title);
-        frame.setSize(new Dimension(400, 200));
-        frame.setLocationRelativeTo(null);
-        frame.setVisible(true);
-        frame.setLayout(new GridBagLayout());
-    }
-
-    public final void setDefaultTabSettings(final JPanel jPanel) {
-        jPanel.setLayout(new GridBagLayout());
-        this.getGridBagConstraints().fill = GridBagConstraints.HORIZONTAL;
-    }
-
-    public final JLabel createLabel(final Object panel, final String labelText, final int gridxValue, final int gridyValue) {
-        final JLabel label = this.componentBuilder.createLabel(labelText);
-        this.setPosition(panel, this.getGridBagConstraints(), gridxValue, gridyValue, label);
-
-        return label;
     }
 
     public final JButton createButton(
@@ -71,29 +48,17 @@ public class GuiBuilder {
         return button;
     }
 
-    public final JTextField createTextField(
+    public final JCheckBox createCheckBox(
             final Object panel,
             final String name,
-            final int textFieldSize,
+            final String text,
             final int gridxValue,
             final int gridyValue) {
 
-        final JTextField textField = this.componentBuilder.createTextField(name, textFieldSize);
-        this.setPosition(panel, this.getGridBagConstraints(), gridxValue, gridyValue, textField);
+        final JCheckBox checkBox = this.componentBuilder.createCheckBox(name, text);
+        this.setPosition(panel, this.getGridBagConstraints(), gridxValue, gridyValue, checkBox);
 
-        return textField;
-    }
-
-    public final JPanel createPanel(final Object panel, final int gridxValue, final int gridyValue, final int width) {
-
-        final int tmpWidth = this.getGridBagConstraints().gridwidth;
-        this.getGridBagConstraints().gridwidth = width;
-        final JPanel newPanel = new JPanel();
-        this.setPosition(panel, this.getGridBagConstraints(), gridxValue, gridyValue, newPanel);
-        this.getGridBagConstraints().gridwidth = tmpWidth;
-
-        return newPanel;
-
+        return checkBox;
     }
 
     public final JPanel createCombiPanel(
@@ -129,17 +94,23 @@ public class GuiBuilder {
         return comboBox;
     }
 
-    public final JCheckBox createCheckBox(
-            final Object panel,
-            final String name,
-            final String text,
-            final int gridxValue,
-            final int gridyValue) {
+    public final JLabel createLabel(final Object panel, final String labelText, final int gridxValue, final int gridyValue) {
+        final JLabel label = this.componentBuilder.createLabel(labelText);
+        this.setPosition(panel, this.getGridBagConstraints(), gridxValue, gridyValue, label);
 
-        final JCheckBox checkBox = this.componentBuilder.createCheckBox(name, text);
-        this.setPosition(panel, this.getGridBagConstraints(), gridxValue, gridyValue, checkBox);
+        return label;
+    }
 
-        return checkBox;
+    public final JPanel createPanel(final Object panel, final int gridxValue, final int gridyValue, final int width) {
+
+        final int tmpWidth = this.getGridBagConstraints().gridwidth;
+        this.getGridBagConstraints().gridwidth = width;
+        final JPanel newPanel = new JPanel();
+        this.setPosition(panel, this.getGridBagConstraints(), gridxValue, gridyValue, newPanel);
+        this.getGridBagConstraints().gridwidth = tmpWidth;
+
+        return newPanel;
+
     }
 
     public final JScrollPane createTable(
@@ -156,9 +127,37 @@ public class GuiBuilder {
 
     }
 
+    public final JTextField createTextField(
+            final Object panel,
+            final String name,
+            final int textFieldSize,
+            final int gridxValue,
+            final int gridyValue) {
+
+        final JTextField textField = this.componentBuilder.createTextField(name, textFieldSize);
+        this.setPosition(panel, this.getGridBagConstraints(), gridxValue, gridyValue, textField);
+
+        return textField;
+    }
+
     public final GridBagConstraints getGridBagConstraints() {
         return this.gridBagConstraints;
 
+    }
+
+    public final void setDefaultFrameSettings(final JFrame frame, final String title) {
+        // frame.addWindowListener(new MyWindowAdapter(frame));
+        frame.setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
+        frame.setTitle(title);
+        frame.setSize(new Dimension(400, 200));
+        frame.setLocationRelativeTo(null);
+        frame.setVisible(true);
+        frame.setLayout(new GridBagLayout());
+    }
+
+    public final void setDefaultTabSettings(final JPanel jPanel) {
+        jPanel.setLayout(new GridBagLayout());
+        this.getGridBagConstraints().fill = GridBagConstraints.HORIZONTAL;
     }
 
     public void setPosition(
