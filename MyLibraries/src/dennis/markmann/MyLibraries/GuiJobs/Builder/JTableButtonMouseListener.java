@@ -8,9 +8,8 @@ import javax.swing.JTable;
 
 /**
  * MouseListener to enable mouse events on JTables.
- * 
+ *
  * @author dennis.markmann
- * @since jdk1.7.0_21
  * @version 1.0
  */
 

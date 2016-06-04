@@ -10,34 +10,16 @@ import javax.swing.JFrame;
 
 /**
  * Helper class to create new checkBoxes.
- * 
+ *
  * @author dennis.markmann
- * @since jdk1.7.0_21
  * @version 1.0
  */
 
 public class CheckBoxHelper {
 
-    private final List<JCheckBox> checkBoxList = new ArrayList<JCheckBox>();
-    private final CheckBoxSelectionListener checkBoxListener = new CheckBoxSelectionListener(this.checkBoxList);
-
-    public final JCheckBox createSingleSelectionCheckBox(
-            final JFrame frame,
-            final String name,
-            final String text,
-            final int gridxValue,
-            final int gridyValue) {
-        final JCheckBox checkBox = new GuiBuilder().createCheckBox(frame, name, text, gridxValue, gridyValue);
-        this.checkBoxList.add(checkBox);
-        checkBox.addItemListener(this.checkBoxListener);
-
-        return checkBox;
-
-    }
-
     /**
      * Used to enable single select functionality for checkBoxes.
-     * 
+     *
      * @author dennis.markmann
      * @version 1.0
      */
@@ -48,6 +30,14 @@ public class CheckBoxHelper {
 
         private CheckBoxSelectionListener(final List<JCheckBox> checkBoxList) {
             this.checkBoxList = checkBoxList;
+        }
+
+        private void deselectAllOthers(final String checkBoxName) {
+            for (final JCheckBox checkBox : this.checkBoxList) {
+                if (!checkBox.getName().equals(checkBoxName)) {
+                    checkBox.setSelected(false);
+                }
+            }
         }
 
         @Override
@@ -62,13 +52,23 @@ public class CheckBoxHelper {
                 }
             }
         }
+    }
 
-        private void deselectAllOthers(final String checkBoxName) {
-            for (final JCheckBox checkBox : this.checkBoxList) {
-                if (!checkBox.getName().equals(checkBoxName)) {
-                    checkBox.setSelected(false);
-                }
-            }
-        }
+    private final List<JCheckBox> checkBoxList = new ArrayList<JCheckBox>();
+
+    private final CheckBoxSelectionListener checkBoxListener = new CheckBoxSelectionListener(this.checkBoxList);
+
+    public final JCheckBox createSingleSelectionCheckBox(
+            final JFrame frame,
+            final String name,
+            final String text,
+            final int gridxValue,
+            final int gridyValue) {
+        final JCheckBox checkBox = new GuiBuilder().createCheckBox(frame, name, text, gridxValue, gridyValue);
+        this.checkBoxList.add(checkBox);
+        checkBox.addItemListener(this.checkBoxListener);
+
+        return checkBox;
+
     }
 }

@@ -7,9 +7,8 @@ import javax.swing.filechooser.FileFilter;
 
 /**
  * Frame to select a directory and return it.
- * 
+ *
  * @author dennis.markmann
- * @since jdk1.7.0_21
  * @version 1.0
  */
 
