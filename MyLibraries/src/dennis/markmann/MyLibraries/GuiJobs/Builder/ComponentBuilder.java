@@ -58,8 +58,8 @@ public class ComponentBuilder {
 
     }
 
-    public final JComboBox<String> createComboBox(final String name, final String[] content) {
-        final JComboBox<String> comboBox = new JComboBox<String>(content);
+    public final JComboBox<Object> createComboBox(final String name, final Object[] content) {
+        final JComboBox<Object> comboBox = new JComboBox<Object>(content);
         comboBox.setName(name);
 
         return comboBox;

@@ -81,14 +81,14 @@ public class GuiBuilder {
 
     }
 
-    public final JComboBox<String> createComboBox(
+    public final JComboBox<Object> createComboBox(
             final Object panel,
             final String name,
-            final String[] content,
+            final Object[] content,
             final int gridxValue,
             final int gridyValue) {
 
-        final JComboBox<String> comboBox = this.componentBuilder.createComboBox(name, content);
+        final JComboBox<Object> comboBox = this.componentBuilder.createComboBox(name, content);
         this.setPosition(panel, this.getGridBagConstraints(), gridxValue, gridyValue, comboBox);
 
         return comboBox;
