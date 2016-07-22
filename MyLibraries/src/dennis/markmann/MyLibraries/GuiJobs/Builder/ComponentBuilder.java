@@ -1,6 +1,5 @@
 package dennis.markmann.MyLibraries.GuiJobs.Builder;
 
-import java.awt.Component;
 import java.util.ArrayList;
 
 import javax.swing.JButton;
@@ -15,7 +14,7 @@ import javax.swing.table.TableCellRenderer;
 
 /**
  * Used to create GUI elements.
- * 
+ *
  * @author dennis.markmann
  * @version 1.0
  */
@@ -24,19 +23,15 @@ public class ComponentBuilder {
 
     public final JButton createButton(final String name, final String buttonText) {
         final JButton button = new JButton(buttonText);
-        this.setName(button, name);
+        button.setName(name);
         return button;
     }
 
-    public final JLabel createLabel(final String labelText) {
-        return new JLabel(labelText);
-
-    }
-
-    public final JTextField createTextField(final String name, final int textFieldSize) {
-        final JTextField textField = new JTextField(textFieldSize);
-        this.setName(textField, name);
-        return textField;
+    public final JCheckBox createCheckBox(final String name, final String text) {
+        final JCheckBox checkBox = new JCheckBox();
+        checkBox.setText(text);
+        checkBox.setName(name);
+        return checkBox;
     }
 
     public final JPanel createCombiPanel(
@@ -65,15 +60,14 @@ public class ComponentBuilder {
 
     public final JComboBox<String> createComboBox(final String name, final String[] content) {
         final JComboBox<String> comboBox = new JComboBox<String>(content);
-        this.setName(comboBox, name);
+        comboBox.setName(name);
+
         return comboBox;
     }
 
-    public final JCheckBox createCheckBox(final String name, final String text) {
-        final JCheckBox checkBox = new JCheckBox();
-        checkBox.setText(text);
-        this.setName(checkBox, name);
-        return checkBox;
+    public final JLabel createLabel(final String labelText) {
+        return new JLabel(labelText);
+
     }
 
     public final JScrollPane createTable(final JTable jTable, final ArrayList<String> buttonRenderCols) {
@@ -92,8 +86,11 @@ public class ComponentBuilder {
 
     }
 
-    private void setName(final Component object, final String objectName) {
-        object.setName(objectName);
+    public final JTextField createTextField(final String name, final int textFieldSize) {
+        final JTextField textField = new JTextField(textFieldSize);
+        textField.setName(name);
+
+        return textField;
     }
 
 }

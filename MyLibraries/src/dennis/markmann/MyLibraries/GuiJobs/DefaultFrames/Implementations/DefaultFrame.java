@@ -1,7 +1,5 @@
 package dennis.markmann.MyLibraries.GuiJobs.DefaultFrames.Implementations;
 
-import dennis.markmann.MyLibraries.GuiJobs.Builder.GuiBuilder;
-
 /**
  * Interface for frames. Forces to implement default operations and parameters.
  *
@@ -9,12 +7,9 @@ import dennis.markmann.MyLibraries.GuiJobs.Builder.GuiBuilder;
  * @version 1.0
  */
 
-public interface DefaultFrame {
-
-    GuiBuilder BUILDER = new GuiBuilder();
-    int TEXT_FIELD_SIZE = 5;
+public interface DefaultFrame extends DefaultTab {
 
     void closeWindow();
 
-    void openClosingDialog(String string);
+    void openClosingDialog(WindowCloseDialogOptions request);
 }
