@@ -6,7 +6,7 @@ public enum FileType {
 
         @Override
         public String toString() {
-            return "txt";
+            return ".txt";
         }
     },
 
@@ -14,7 +14,7 @@ public enum FileType {
 
         @Override
         public String toString() {
-            return "pdf";
+            return ".pdf";
         }
     },
 
@@ -22,7 +22,7 @@ public enum FileType {
 
         @Override
         public String toString() {
-            return "exe";
+            return ".exe";
         }
     },
 
@@ -30,7 +30,7 @@ public enum FileType {
 
         @Override
         public String toString() {
-            return "mkv";
+            return ".mkv";
         }
     },
 
@@ -38,7 +38,7 @@ public enum FileType {
 
         @Override
         public String toString() {
-            return "avi";
+            return ".avi";
         }
     },
 
@@ -46,7 +46,15 @@ public enum FileType {
 
         @Override
         public String toString() {
-            return "mp3";
+            return ".mp3";
+        }
+    },
+
+    MP4 {
+
+        @Override
+        public String toString() {
+            return ".mp4";
         }
     },
 
@@ -54,7 +62,7 @@ public enum FileType {
 
         @Override
         public String toString() {
-            return "csv";
+            return ".csv";
         }
     },
 
@@ -62,7 +70,7 @@ public enum FileType {
 
         @Override
         public String toString() {
-            return "xml";
+            return ".xml";
         }
     }
 }

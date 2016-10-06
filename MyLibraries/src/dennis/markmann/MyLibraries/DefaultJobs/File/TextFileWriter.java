@@ -9,14 +9,11 @@ public class TextFileWriter {
     public void writeTextIntoFile(String text, File file, boolean overwrite) {
         try (FileWriter writer = new FileWriter(file, overwrite)) {
             writer.write(text);
-        } catch (IOException e) {
+        }
+        catch (IOException e) {
             // use own exception
             e.printStackTrace();
         }
-    }
-
-    public void writeTextIntoFile(String text, String path, boolean overwrite) {
-        writeTextIntoFile(text, new File(path), overwrite);
     }
 
 }
