@@ -7,19 +7,22 @@ public class FileFilter {
 
     ArrayList<FileType> fileTypes = new ArrayList<>();
 
-    public void addDocuments() {
+    public FileFilter addDocuments() {
         this.fileTypes.add(FileType.TXT);
         this.fileTypes.add(FileType.PDF);
         this.fileTypes.add(FileType.XML);
         this.fileTypes.add(FileType.CSV);
+        return this;
     }
 
-    public void addExecutable() {
+    public FileFilter addExecutable() {
         this.fileTypes.add(FileType.EXE);
+        return this;
     }
 
-    public void addFileTypes(ArrayList<FileType> fileTypes) {
+    public FileFilter addFileTypes(ArrayList<FileType> fileTypes) {
         this.fileTypes.addAll(fileTypes);
+        return this;
     }
 
     public FileFilter addMovies() {
@@ -29,12 +32,14 @@ public class FileFilter {
         return this;
     }
 
-    public void addMusic() {
+    public FileFilter addMusic() {
         this.fileTypes.add(FileType.MP3);
+        return this;
     }
 
-    public void addTextFiles() {
+    public FileFilter addTextFiles() {
         this.fileTypes.add(FileType.TXT);
+        return this;
     }
 
     public ArrayList<File> filter(ArrayList<File> fileList) {
