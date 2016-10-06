@@ -9,7 +9,7 @@ import java.nio.channels.FileChannel;
 
 /**
  * Used to create a copy of a given source at a selected destination.
- * 
+ *
  * @author dennis.markmann
  * @version 1.0
  */
@@ -18,43 +18,51 @@ public class FileCopy {
 
     private final long chunckSizeInBytes = 1024 * 1024;
 
-    public final void copyFolder(final String sourceFolder, final String destinationFolder, boolean includeSubfolder)
-            throws CopyOperationException {
-
-        for (final File file : new File(sourceFolder).listFiles()) {
-            if (!file.isDirectory()) {
-                this.copy(file.getPath(), this.changeSourceToDestinationPath(file.getPath(), sourceFolder, destinationFolder));
-            } else if (!file.isDirectory() && includeSubfolder) {
-                final String destination = this.changeSourceToDestinationPath(file.getPath(), sourceFolder, destinationFolder);
-                new File(destination).mkdirs();
-                this.copyFolder(file.getAbsolutePath(), destination, includeSubfolder);
-            }
-        }
+    private File changeSourceToDestinationPath(final File file, final File sourceFolder, final File destinationFolder) {
+        return new File(
+                destinationFolder.getAbsolutePath() + file.getPath()
+                        .substring(file.getPath().indexOf(sourceFolder.getPath()) + sourceFolder.getPath().length()));
     }
 
-    public final void copy(final String source, final String destination) throws CopyOperationException {
+    public final void copy(final File sourceFile, final File copiedFile) throws CopyOperationException {
 
         FileInputStream fileInputStream = null;
         FileOutputStream fileOutputStream = null;
         try {
 
-            final File sourceFile = new File(source);
             fileInputStream = new FileInputStream(sourceFile);
             final FileChannel inputChannel = fileInputStream.getChannel();
 
-            final File copiedFile = new File(destination);
             fileOutputStream = new FileOutputStream(copiedFile);
             final FileChannel outputChannel = fileOutputStream.getChannel();
 
             this.transfer(inputChannel, outputChannel, sourceFile.length());
 
-        } catch (final Exception e) {
-            throw (new CopyOperationException(e.getStackTrace(), source));
-        } finally {
+        }
+        catch (final Exception e) {
+            throw (new CopyOperationException(e.getStackTrace(), sourceFile.toString()));
+        }
+        finally {
             try {
                 fileInputStream.close();
                 fileOutputStream.close();
-            } catch (IOException e) {
+            }
+            catch (IOException e) {
+            }
+        }
+    }
+
+    public final void copyFolder(final File sourceFolder, final File destinationFolder, boolean includeSubfolder)
+            throws CopyOperationException {
+
+        for (final File file : sourceFolder.listFiles()) {
+            if (!file.isDirectory()) {
+                this.copy(file, this.changeSourceToDestinationPath(file, sourceFolder, destinationFolder));
+            }
+            else if (!file.isDirectory() && includeSubfolder) {
+                final File destination = this.changeSourceToDestinationPath(file, sourceFolder, destinationFolder);
+                destination.mkdirs();
+                this.copyFolder(file, destination, includeSubfolder);
             }
         }
     }
@@ -74,13 +82,6 @@ public class FileCopy {
 
             overallBytesTransfered += bytesTransfered;
         }
-    }
-
-    private String changeSourceToDestinationPath(
-            final String filePath,
-            final String sourceFolder,
-            final String destinationFolder) {
-        return destinationFolder + filePath.substring(filePath.indexOf(sourceFolder) + sourceFolder.length());
     }
 
 }
