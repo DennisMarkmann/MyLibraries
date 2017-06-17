@@ -5,14 +5,11 @@ import java.util.ArrayList;
 
 public class FileLister {
 
-    public ArrayList<File> listFilesForFolder(File folder, ArrayList<File> fileList, boolean includeSubfolder) {
-        if (fileList == null) {
-            fileList = new ArrayList<>();
-        }
-
+    public ArrayList<File> listFilesForFolder(File folder, boolean includeSubfolder) {
+        ArrayList<File> fileList = new ArrayList<>();
         for (File file : folder.listFiles()) {
             if (includeSubfolder && file.isDirectory()) {
-                this.listFilesForFolder(file, fileList, true);
+                this.listFilesForFolder(file, true);
             }
             else {
                 fileList.add(file);
@@ -24,7 +21,7 @@ public class FileLister {
     public ArrayList<File> listFilesInFolderList(final ArrayList<File> folderList, boolean includeSubfolder) {
         final ArrayList<File> fileList = new ArrayList<>();
         for (final File folder : folderList) {
-            this.listFilesForFolder(folder, fileList, includeSubfolder);
+            fileList.addAll(this.listFilesForFolder(folder, includeSubfolder));
         }
         return fileList;
     }
