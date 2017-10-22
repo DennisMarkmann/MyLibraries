@@ -58,4 +58,20 @@ public class FileFilter {
         }
         return filteredList;
     }
+
+    public ArrayList<File> filterByNames(ArrayList<File> fileList, ArrayList<String> nameFilterList) {
+        ArrayList<File> filteredList = new ArrayList<>();
+
+        for (File file : fileList) {
+            if (!file.isDirectory()) {
+                final String fileName = file.getName().toLowerCase();
+                for (String name : nameFilterList) {
+                    if (fileName.contains(name)) {
+                        filteredList.add(file);
+                    }
+                }
+            }
+        }
+        return filteredList;
+    }
 }
